@@ -16,13 +16,22 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                Index Admin page
+                <div class="col-12 mt-3"
+                     sec:authorize="hasRole('USER')">
+                    <h3>Hello <span sec:authentication="principal.username"></span>
+                        your role USER</h3>
+                </div>
+                <div class="col-12 mt-3"
+                     sec:authorize="hasRole('ADMIN')">
+                    <h3>Hello <span sec:authentication="principal.username"></span>
+                        your role ADMIN</h3>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script th:replace="fragments/footer :: scripts"></script>
+<script th:replace="fragments/footer :: footer"></script>
 
 </body>
 </html>

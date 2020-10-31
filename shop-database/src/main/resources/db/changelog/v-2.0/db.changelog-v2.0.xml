@@ -7,7 +7,7 @@
 
 
     <changeSet id="2001" author="abtank">
-        <sqlFile dbms="mysql"
+        <sqlFile dbms="postgresql"
                  encoding="utf8"
                  endDelimiter="\nGO"
                  path="01-create-product-related-tables.sql"
@@ -15,7 +15,7 @@
                  splitStatements="true"
                  stripComments="true"/>
         <rollback>
-            <sqlFile dbms="mysql"
+            <sqlFile dbms="postgresql"
                      encoding="utf8"
                      endDelimiter="\nGO"
                      path="01-drop-product-related-tables.sql"

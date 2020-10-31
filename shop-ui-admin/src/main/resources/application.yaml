@@ -25,4 +25,6 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp:
+          user_jdbc_metadata_defaults: false
         ddl-auto: validate

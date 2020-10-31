@@ -1,4 +1,4 @@
-package ru.abtank.security;
+package ru.abtank.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,6 +28,7 @@ public class UserAuthService implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         return userRepository.findByLogin(login)
                 .map(user -> new User(
@@ -37,7 +38,7 @@ public class UserAuthService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("user '%s' not found", login)));
     }
 
-    public Collection<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles) {
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 }
