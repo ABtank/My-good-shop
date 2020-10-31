@@ -12,16 +12,16 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4">Brands list</h2>
+        <h2 class="mb-4">Roles list</h2>
 
         <div class="card mb-4">
 
             <div class="card-body">
-                <form class="form-group" th:action="@{/categories/create}">
+                <form class="form-group" th:action="@{/roles/create}">
                     <button type="submit" class="btn btn-primary">Create new</button>
                 </form>
 
-                <table id="categories" class="table table-hover" cellspacing="0" width="100%">
+                <table id="roles" class="table table-hover" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -30,15 +30,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="category : ${categories}">
-                        <td th:text="${category.id}"></td>
-                        <td th:text="${category.name}"></td>
+                    <tr th:each="role : ${roles}">
+                        <td th:text="${role.id}"></td>
+                        <td th:text="${role.name}"></td>
                         <td>
-                            <a th:href="@{/categories/{id}/update(id=${category.id})}"
+                            <a th:href="@{/roles/{id}/update(id=${role.id})}"
                                class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-fw fa-edit"></i>
                             </a>
-                            <form th:action="@{/categories/{id}/delete(id=${category.id})}" th:method="delete"
+                            <form th:action="@{/roles/{id}/delete(id=${role.id})}" th:method="delete"
                                   class="d-inline">
                                 <button class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="Delete">
                                     <i class="fa fa-fw fa-trash"></i>
