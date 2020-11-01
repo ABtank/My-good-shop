@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Category;
 import ru.abtank.representation.CategoryRepr;
 import ru.abtank.servise.CategoryService;
-import ru.abtank.servise.CategoryServiceImpl;
 
 
 @Controller

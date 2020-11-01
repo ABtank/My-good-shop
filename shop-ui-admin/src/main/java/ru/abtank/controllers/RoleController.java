@@ -7,13 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.abtank.persist.model.Brand;
+import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Role;
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.RoleRepr;
-import ru.abtank.servise.BrandServiceImpl;
 import ru.abtank.servise.RoleService;
-import ru.abtank.servise.RoleServiceImpl;
 
 @Controller
 @RequestMapping("/roles")

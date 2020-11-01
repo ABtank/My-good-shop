@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Brand;
 import ru.abtank.representation.BrandRepr;
 import ru.abtank.servise.BrandService;
-import ru.abtank.servise.BrandServiceImpl;
 
 @Controller
 @RequestMapping("/brands")

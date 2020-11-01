@@ -1,4 +1,4 @@
-package ru.abtank.controllers;
+package ru.abtank.exceptions;
 
 public class NotFoundException extends RuntimeException {
     private String id;

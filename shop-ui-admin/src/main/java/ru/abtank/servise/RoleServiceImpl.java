@@ -3,12 +3,9 @@ package ru.abtank.servise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.abtank.controllers.NotFoundException;
-import ru.abtank.persist.model.Brand;
+import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Role;
-import ru.abtank.persist.repositories.BrandRepository;
 import ru.abtank.persist.repositories.RoleRepository;
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.RoleRepr;
 
 import java.io.IOException;

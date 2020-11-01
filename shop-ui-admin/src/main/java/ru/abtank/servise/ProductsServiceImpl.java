@@ -3,7 +3,7 @@ package ru.abtank.servise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.abtank.controllers.NotFoundException;
+import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Product;
 import ru.abtank.persist.repositories.ProductRepository;
 import ru.abtank.representation.ProductRepr;
