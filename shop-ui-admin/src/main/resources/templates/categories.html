@@ -17,7 +17,7 @@
         <div class="card mb-4">
 
             <div class="card-body">
-                <form class="form-group" th:action="@{/categories/create}">
+                <form class="form-group" sec:authorize="hasRole('ADMIN')" th:action="@{/categories/create}">
                     <button type="submit" class="btn btn-primary">Create new</button>
                 </form>
 
@@ -26,14 +26,14 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th class="actions">Actions</th>
+                        <th sec:authorize="hasRole('ADMIN')" class="actions">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="category : ${categories}">
                         <td th:text="${category.id}"></td>
                         <td th:text="${category.name}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <a th:href="@{/categories/{id}/update(id=${category.id})}"
                                class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-fw fa-edit"></i>
