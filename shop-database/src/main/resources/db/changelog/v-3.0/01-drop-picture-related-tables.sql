@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS pictures CASCADE;
+GO
+
+DROP TABLE IF EXISTS products_pictures CASCADE;
+GO
+
+DROP TABLE IF EXISTS pictures_data CASCADE;
+GO
