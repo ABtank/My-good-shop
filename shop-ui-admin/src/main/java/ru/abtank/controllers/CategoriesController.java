@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.abtank.persist.model.Category;
 import ru.abtank.representation.CategoryRepr;
+import ru.abtank.servise.CategoryService;
 import ru.abtank.servise.CategoryServiceImpl;
 
 
@@ -18,10 +19,10 @@ public class CategoriesController {
 
     private static final Logger logger = LoggerFactory.getLogger(CategoriesController.class);
 
-    CategoryServiceImpl categoryService;
+    CategoryService categoryService;
 
     @Autowired
-    public void setCategoryService(CategoryServiceImpl categoryService) {
+    public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

@@ -12,16 +12,17 @@ import ru.abtank.persist.model.Role;
 import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.RoleRepr;
 import ru.abtank.servise.BrandServiceImpl;
+import ru.abtank.servise.RoleService;
 import ru.abtank.servise.RoleServiceImpl;
 
 @Controller
 @RequestMapping("/roles")
 public class RoleController {
 
-    RoleServiceImpl roleService;
+    RoleService roleService;
 
     @Autowired
-    public void setRoleService(RoleServiceImpl roleService) {
+    public void setRoleService(RoleService roleService) {
         this.roleService = roleService;
     }
 

@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.abtank.persist.model.Brand;
 import ru.abtank.representation.BrandRepr;
+import ru.abtank.servise.BrandService;
 import ru.abtank.servise.BrandServiceImpl;
 
 @Controller
 @RequestMapping("/brands")
 public class BrandController {
 
-    BrandServiceImpl brandService;
+    BrandService brandService;
 
     @Autowired
-    public void setBrandService(BrandServiceImpl brandService) {
+    public void setBrandService(BrandService brandService) {
         this.brandService = brandService;
     }
 

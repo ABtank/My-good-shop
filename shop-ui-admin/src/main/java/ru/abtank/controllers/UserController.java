@@ -16,10 +16,10 @@ import ru.abtank.servise.UserService;
 @RequestMapping("/users")
 public class UserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private UserService userService;
+    private RoleService roleService;
 
-    UserService userService;
-    RoleService roleService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public void setRoleService(RoleService roleService) {
