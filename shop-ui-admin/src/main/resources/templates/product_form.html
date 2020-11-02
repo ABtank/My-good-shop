@@ -50,11 +50,11 @@
                         </select>
                     </div>
 
-<!--                    <div class="form-group">-->
-<!--                        <label for="newPictures">Product image</label>-->
-<!--                        <input th:field="*{newPictures}" type="file" class="form-control" id="newPictures"-->
-<!--                               placeholder="Upload new product picture" multiple>-->
-<!--                    </div>-->
+                    <div class="form-group">
+                        <label for="newPictures">Product image</label>
+                        <input th:field="*{newPictures}" type="file" class="form-control" id="newPictures"
+                               placeholder="Upload new product picture" multiple>
+                    </div>
                 </div>
 
                 <div class="card-footer bg-white">
@@ -63,15 +63,15 @@
             </div>
         </form>
 
-<!--        <div class="container-fluid mb-4">-->
-<!--            <div class="card-columns" style="column-count: 5">-->
-<!--                <div class="card" th:each="pict : ${product.pictures}">-->
-<!--                    <div class="card-header">Picture</div>-->
-<!--                    <img class="card-img-bottom" th:src="@{/picture/{pictureId}(pictureId=${pict.id})}"-->
-<!--                         width="40%"/>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="container-fluid mb-4">
+            <div class="card-columns" style="column-count: 5">
+                <div class="card" th:each="picture : ${product.pictures}">
+                    <div class="card-header" th:text="${picture.name}">Picture</div>
+                    <img class="card-img-bottom" th:src="@{/picture/{pictureId}(pictureId=${picture.id})}"
+                         width="40%"/>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

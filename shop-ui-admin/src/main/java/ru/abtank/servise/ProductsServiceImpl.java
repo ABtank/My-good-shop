@@ -1,14 +1,20 @@
 package ru.abtank.servise;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import ru.abtank.exceptions.NotFoundException;
+import ru.abtank.persist.model.Picture;
+import ru.abtank.persist.model.PictureData;
 import ru.abtank.persist.model.Product;
 import ru.abtank.persist.repositories.ProductRepository;
 import ru.abtank.representation.ProductRepr;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +23,7 @@ import java.util.stream.Collectors;
 public class ProductsServiceImpl implements ProductService {
 
     ProductRepository productRepository;
+    private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImpl.class);
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
@@ -54,6 +61,24 @@ public class ProductsServiceImpl implements ProductService {
         product.setCategory(productRepr.getCategory());
         product.setBrand(productRepr.getBrand());
         product.setPrice(productRepr.getPrice());
+
+        if (productRepr.getNewPictures() != null) {
+            for (MultipartFile newPicture : productRepr.getNewPictures()) {
+                logger.info("Product {} file {} size {}",
+                        product.getId(),
+                        newPicture.getOriginalFilename(),
+                        newPicture.getSize());
+
+                if (product.getPictures() == null){
+                    product.setPictures(new ArrayList<>());
+                }
+
+                product.getPictures().add(new Picture(
+                        newPicture.getOriginalFilename(),
+                        newPicture.getContentType(),
+                        new PictureData(newPicture.getBytes())));
+            }
+        }
         productRepository.save(product);
     }
 }

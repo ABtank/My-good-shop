@@ -1,10 +1,13 @@
 package ru.abtank.representation;
 
+import org.springframework.web.multipart.MultipartFile;
 import ru.abtank.persist.model.Brand;
 import ru.abtank.persist.model.Category;
 import ru.abtank.persist.model.Product;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProductRepr {
 
@@ -17,6 +20,11 @@ public class ProductRepr {
     private Category category;
 
     private Brand brand;
+//для сохранения в бд достаточно списка картинок
+    private List<PictureRepr> pictures;
+
+//  Для получения информации о новой картинки от клиента
+    private MultipartFile[] newPictures;
 
     public ProductRepr() {
     }
@@ -27,6 +35,9 @@ public class ProductRepr {
         this.price = product.getPrice();
         this.category = product.getCategory();
         this.brand = product.getBrand();
+        this.pictures = product.getPictures().stream()
+                .map(PictureRepr::new)
+                .collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -67,5 +78,21 @@ public class ProductRepr {
 
     public void setBrand(Brand brand) {
         this.brand = brand;
+    }
+
+    public List<PictureRepr> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<PictureRepr> pictures) {
+        this.pictures = pictures;
+    }
+
+    public MultipartFile[] getNewPictures() {
+        return newPictures;
+    }
+
+    public void setNewPictures(MultipartFile[] newPictures) {
+        this.newPictures = newPictures;
     }
 }

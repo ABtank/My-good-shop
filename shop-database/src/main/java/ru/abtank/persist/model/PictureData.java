@@ -5,7 +5,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "picture_data")
+@Table(name = "pictures_data")
 public class PictureData {
 
     @Id

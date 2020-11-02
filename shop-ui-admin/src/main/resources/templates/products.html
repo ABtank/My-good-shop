@@ -38,7 +38,7 @@
                         <td th:text="${product.brand.name}"></td>
                         <td th:text="${product.price}"></td>
                         <td sec:authorize="hasRole('ADMIN')">
-                            <a th:href="@{/products/{id}/edit(id=${product.id})}" class="btn btn-icon btn-pill btn-primary"
+                            <a th:href="@{/products/{id}/update(id=${product.id})}" class="btn btn-icon btn-pill btn-primary"
                                data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-fw fa-edit"></i>
                             </a>
