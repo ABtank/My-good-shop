@@ -26,3 +26,6 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
         ddl-auto: validate
+
+#logging:
+#  level: debug

@@ -1,4 +1,4 @@
-package ru.abtank.representation;
+package ru.abtank.representations;
 
 import ru.abtank.persist.model.Picture;
 

@@ -12,6 +12,7 @@ import ru.abtank.persist.model.PictureData;
 import ru.abtank.persist.model.Product;
 import ru.abtank.persist.repositories.ProductRepository;
 import ru.abtank.representation.ProductRepr;
+import ru.abtank.service.PictureService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,14 +23,16 @@ import java.util.stream.Collectors;
 @Service
 public class ProductsServiceImpl implements ProductService {
 
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
+    private final PictureService pictureService;
+
     private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImpl.class);
 
     @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
+    public ProductsServiceImpl(ProductRepository productRepository, PictureService pictureService) {
         this.productRepository = productRepository;
+        this.pictureService = pictureService;
     }
-
 
     @Override
     @Transactional
@@ -69,14 +72,14 @@ public class ProductsServiceImpl implements ProductService {
                         newPicture.getOriginalFilename(),
                         newPicture.getSize());
 
-                if (product.getPictures() == null){
+                if (product.getPictures() == null) {
                     product.setPictures(new ArrayList<>());
                 }
 
                 product.getPictures().add(new Picture(
                         newPicture.getOriginalFilename(),
                         newPicture.getContentType(),
-                        new PictureData(newPicture.getBytes())));
+                        pictureService.createPictureData(newPicture.getBytes())));
             }
         }
         productRepository.save(product);

@@ -4,6 +4,8 @@ server:
     context-path: /store
 
 spring:
+#  main:
+#    allow-bean-definition-overriding: true
   mvc:
     hiddenmethod:
       filter:
@@ -28,3 +30,11 @@ spring:
         temp:
           user_jdbc_metadata_defaults: false
         ddl-auto: validate
+
+picture:
+  storage:
+    type: database
+    path: C:\\Users\\ABtan\\Downloads
+
+#logging:
+#  level: debug

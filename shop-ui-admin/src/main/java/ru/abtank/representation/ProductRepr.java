@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.abtank.persist.model.Brand;
 import ru.abtank.persist.model.Category;
 import ru.abtank.persist.model.Product;
+import ru.abtank.representations.PictureRepr;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,7 +1,8 @@
 CREATE TABLE pictures_data
 (
     id   bigserial PRIMARY KEY,
-    data bytea NOT NULL
+    data bytea,
+    file_name varchar(255)
 );
 GO
 

@@ -79,7 +79,7 @@ public class ProductsController {
     public String saveProduct(Model model, ProductRepr productRepr, RedirectAttributes redirectAttributes) {
         model.addAttribute("activePage", "Products");
         try {
-            logger.info("try save product");
+            logger.info("try save product category {} brand {} name {}", productRepr.getCategory(),productRepr.getBrand(),productRepr.getName());
             productService.save(productRepr);
         } catch (Exception e) {
             if (productRepr.getId() == null) {
