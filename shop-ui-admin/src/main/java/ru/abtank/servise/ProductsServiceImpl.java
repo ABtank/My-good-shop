@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Picture;
-import ru.abtank.persist.model.PictureData;
 import ru.abtank.persist.model.Product;
 import ru.abtank.persist.repositories.ProductRepository;
 import ru.abtank.representation.ProductRepr;
