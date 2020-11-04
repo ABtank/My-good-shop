@@ -25,4 +25,15 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="2002" author="abtank">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 endDelimiter="\nGO"
+                 path="01-insert-categories-brands-statuses-products-related-tables.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback/>
+    </changeSet>
+
 </databaseChangeLog>
