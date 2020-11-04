@@ -19,6 +19,12 @@
         <li th:classappend="${activePage == 'Brands'} ? active">
             <a th:href="@{/brands}" th:text="${'Brands ('+count_brands+')'}">
                 <i class="fa fa-fw fa-link"></i> Brands</a></li>
+        <li th:classappend="${activePage == 'Statuses'} ? active">
+            <a th:href="@{/statuses}" th:text="${'Statuses ('+count_statuses+')'}">
+                <i class="fa fa-fw fa-link"></i> Statuses</a></li>
+        <li th:classappend="${activePage == 'Product_types'} ? active">
+            <a th:href="@{/product_types}" th:text="${'Product_types ('+count_product_types+')'}">
+                <i class="fa fa-fw fa-link"></i> Product_types</a></li>
         <li th:classappend="${activePage == 'Products'} ? active">
             <a th:href="@{/products}" th:text="${'Products ('+count_products+')'}">
                 <i class="fa fa-fw fa-link"></i> Products</a></li>

@@ -1,9 +1,7 @@
 package ru.abtank.representation;
 
 import org.springframework.web.multipart.MultipartFile;
-import ru.abtank.persist.model.Brand;
-import ru.abtank.persist.model.Category;
-import ru.abtank.persist.model.Product;
+import ru.abtank.persist.model.*;
 import ru.abtank.representations.PictureRepr;
 
 import java.math.BigDecimal;
@@ -16,15 +14,27 @@ public class ProductRepr {
 
     private String name;
 
+    private String quickDescription;
+
+    private String description;
+
+    private Integer size;
+
+    private Integer discount;
+
     private BigDecimal price;
 
     private Category category;
 
     private Brand brand;
-//для сохранения в бд достаточно списка картинок
+
+    private Status status;
+
+    private ProductType type;
+    //для сохранения в бд достаточно списка картинок
     private List<PictureRepr> pictures;
 
-//  Для получения информации о новой картинки от клиента
+    //  Для получения информации о новой картинки от клиента
     private MultipartFile[] newPictures;
 
     public ProductRepr() {
@@ -33,9 +43,15 @@ public class ProductRepr {
     public ProductRepr(Product product) {
         this.id = product.getId();
         this.name = product.getName();
+        this.quickDescription = product.getQuickDescription();
+        this.description = product.getDescription();
+        this.size = product.getSize();
+        this.discount = product.getDiscount();
         this.price = product.getPrice();
         this.category = product.getCategory();
         this.brand = product.getBrand();
+        this.type = product.getType();
+        this.status = product.getStatus();
         this.pictures = product.getPictures().stream()
                 .map(PictureRepr::new)
                 .collect(Collectors.toList());
@@ -95,5 +111,53 @@ public class ProductRepr {
 
     public void setNewPictures(MultipartFile[] newPictures) {
         this.newPictures = newPictures;
+    }
+
+    public String getQuickDescription() {
+        return quickDescription;
+    }
+
+    public void setQuickDescription(String quickDescription) {
+        this.quickDescription = quickDescription;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
     }
 }

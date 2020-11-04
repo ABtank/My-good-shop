@@ -25,18 +25,30 @@
                     <thead>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Quick_desc</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                    <th>Discount</th>
+                    <th>Price</th>
                     <th>Categories</th>
                     <th>Brand</th>
-                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Status</th>
                     <th sec:authorize="hasRole('ADMIN')" class="actions">Actions</th>
                     </thead>
                     <tbody>
                     <tr th:each="product : ${products}">
                         <td th:text="${product.id}"></td>
                         <td th:text="${product.name}"></td>
+                        <td th:text="${product.quickDescription}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td th:text="${product.size}"></td>
+                        <td th:text="${product.discount}"></td>
+                        <td th:text="${product.price}"></td>
                         <td th:text="${product.category.name}"></td>
                         <td th:text="${product.brand.name}"></td>
-                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.type.name}"></td>
+                        <td th:text="${product.status.name}"></td>
                         <td sec:authorize="hasRole('ADMIN')">
                             <a th:href="@{/products/{id}/update(id=${product.id})}" class="btn btn-icon btn-pill btn-primary"
                                data-toggle="tooltip" title="Edit">

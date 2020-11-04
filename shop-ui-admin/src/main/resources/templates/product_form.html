@@ -29,8 +29,28 @@
                                placeholder="Enter product name" required>
                     </div>
                     <div class="form-group">
+                        <label for="name">Product quick_desc</label>
+                        <input th:field="*{quickDescription}" type="text" class="form-control" id="quickDescription"
+                               placeholder="Enter product quick description" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Product description</label>
+                        <textarea th:field="*{description}" type="text" class="form-control" id="description" rows="3"
+                                  placeholder="Enter product description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Size</label>
+                        <input th:field="*{size}" type="number" class="form-control" id="size"
+                               placeholder="Enter product discount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Discount</label>
+                        <input th:field="*{discount}" type="number" class="form-control" id="discount"
+                               placeholder="Enter product price" required>
+                    </div>
+                    <div class="form-group">
                         <label for="price">Price</label>
-                        <input th:field="*{price}" type="text" class="form-control" id="price"
+                        <input th:field="*{price}" type="number" class="form-control" id="price"
                                placeholder="Enter product price" required>
                     </div>
                     <div class="form-group">
@@ -47,6 +67,22 @@
                             <option th:each="cat : ${categories}"
                                     th:text="${cat.name}"
                                     th:value="${cat.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Statuses</label>
+                        <select class="form-control" id="status" th:field="*{status}" required>
+                            <option th:each="status : ${statuses}"
+                                    th:text="${status.name}"
+                                    th:value="${status.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product_type">Product_type</label>
+                        <select class="form-control" id="product_type" th:field="*{type}" required>
+                            <option th:each="pro_type : ${product_types}"
+                                    th:text="${pro_type.name}"
+                                    th:value="${pro_type.id}"></option>
                         </select>
                     </div>
 

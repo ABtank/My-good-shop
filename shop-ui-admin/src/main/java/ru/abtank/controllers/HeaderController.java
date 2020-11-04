@@ -15,14 +15,18 @@ public class HeaderController {
     private final UserService userService;
     private final CategoryService categoryService;
     private final BrandService brandService;
+    private final StatusService statusService;
+    private final ProductTypeService productTypeService;
     private final RoleService roleService;
 
     @Autowired
-    public HeaderController(ProductService productService, UserService userService, CategoryService categoryService, BrandService brandService, RoleService roleService) {
+    public HeaderController(ProductService productService, UserService userService, CategoryService categoryService, BrandService brandService, StatusService statusService, ProductTypeService productTypeService, RoleService roleService) {
         this.productService = productService;
         this.userService = userService;
         this.categoryService = categoryService;
         this.brandService = brandService;
+        this.statusService = statusService;
+        this.productTypeService = productTypeService;
         this.roleService = roleService;
     }
 
@@ -34,6 +38,8 @@ public class HeaderController {
             model.addAttribute("count_categories", categoryService.findAll().size());
             model.addAttribute("count_users", userService.findAll().size());
             model.addAttribute("count_brands", brandService.findAll().size());
+            model.addAttribute("count_statuses", statusService.findAll().size());
+            model.addAttribute("count_product_types", productTypeService.findAll().size());
             model.addAttribute("count_roles", roleService.findAll().size());
         }
     }

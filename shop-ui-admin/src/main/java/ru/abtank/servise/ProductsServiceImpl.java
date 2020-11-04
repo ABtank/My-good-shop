@@ -60,9 +60,15 @@ public class ProductsServiceImpl implements ProductService {
         Product product = (productRepr.getId() != null) ? productRepository.findById(productRepr.getId())
                 .orElseThrow(NotFoundException::new) : new Product();
         product.setName(productRepr.getName());
+        product.setQuickDescription(productRepr.getQuickDescription());
+        product.setDescription(productRepr.getDescription());
+        product.setSize(productRepr.getSize());
+        product.setDiscount(productRepr.getDiscount());
+        product.setPrice(productRepr.getPrice());
         product.setCategory(productRepr.getCategory());
         product.setBrand(productRepr.getBrand());
-        product.setPrice(productRepr.getPrice());
+        product.setType(productRepr.getType());
+        product.setStatus(productRepr.getStatus());
 
         if (productRepr.getNewPictures() != null) {
             for (MultipartFile newPicture : productRepr.getNewPictures()) {

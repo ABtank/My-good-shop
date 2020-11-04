@@ -16,17 +16,17 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4" th:if="${update}">Update category</h2>
-        <h2 class="mb-4" th:if="${create}">Create category</h2>
+        <h2 class="mb-4" th:if="${update}">Update product_type</h2>
+        <h2 class="mb-4" th:if="${create}">Create product_type</h2>
 
-        <form th:object="${category}" method="post" th:action="@{/categories/save}">
+        <form th:object="${product_type}" method="post" th:action="@{/product_types/save}">
             <div class="card mb-4">
                 <div class="card-body">
                     <input th:type="hidden" th:field="*{id}">
                     <div class="form-group">
-                        <label for="name">Category name</label>
+                        <label for="name">Product_type name</label>
                         <input th:field="*{name}" type="text" class="form-control" id="name"
-                               placeholder="Enter category name" required>
+                               placeholder="Enter product_type name" required>
                     </div>
                 </div>
 

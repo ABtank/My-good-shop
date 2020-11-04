@@ -27,7 +27,7 @@ VALUES ('Men'),
        ('Guns');
 GO
 
-INSERT INTO type_of_product (name)
+INSERT INTO product_types (name)
 VALUES ('Sofa Cum Beds'),
        ('Bags'),
        ('Caps & Hats'),

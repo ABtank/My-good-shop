@@ -17,6 +17,18 @@ public class Product implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "quick_desc", nullable = false)
+    private String quickDescription;
+
+    @Column(name = "description", nullable = false)
+    private String description;
+
+    @Column(name = "size")
+    private Integer size;
+
+    @Column(name = "discount")
+    private Integer discount;
+
     @Column(name = "price")
     private BigDecimal price;
 
@@ -26,6 +38,12 @@ public class Product implements Serializable {
     @ManyToOne(optional = false)
     private Category category;
 
+    @ManyToOne(optional = false)
+    private Status status;
+
+    @ManyToOne(optional = false)
+    private ProductType type;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
     @JoinTable(name = "products_pictures",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -33,7 +51,6 @@ public class Product implements Serializable {
     private List<Picture> pictures;
 
     public Product() {
-
     }
 
     public Long getId() {
@@ -52,12 +69,52 @@ public class Product implements Serializable {
         this.name = name;
     }
 
+    public String getQuickDescription() {
+        return quickDescription;
+    }
+
+    public void setQuickDescription(String quickDescription) {
+        this.quickDescription = quickDescription;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public Category getCategory() {
@@ -68,12 +125,20 @@ public class Product implements Serializable {
         this.category = category;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
     }
 
     public List<Picture> getPictures() {
