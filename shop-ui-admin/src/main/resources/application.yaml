@@ -1,5 +1,5 @@
 server:
-  port: 8189
+  port: 8888
   servlet:
     context-path: /store
 
@@ -33,7 +33,7 @@ spring:
 
 picture:
   storage:
-    type: database
+    type: files
     path: C:\\Users\\ABtan\\Downloads
 
 #logging:

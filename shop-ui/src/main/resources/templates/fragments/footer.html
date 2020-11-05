@@ -69,4 +69,18 @@
     <!-- slide -->
     <script th:src="@{/js/bootstrap.min.js}"></script>
 
-</th:block></html>
+</th:block>
+
+<th:block th:fragment="light_box_files">
+<script th:src="@{/js/jquery.chocolat.js}"></script>
+<link rel="stylesheet" th:href="@{/css/chocolat.css}"
+      type="text/css" media="screen" charset="utf-8">
+<!--light-box-files -->
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $('a.picture').Chocolat();
+    });
+</script>
+</th:block>
+
+</html>
