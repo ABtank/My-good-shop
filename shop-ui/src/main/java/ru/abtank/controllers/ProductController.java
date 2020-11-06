@@ -25,14 +25,14 @@ public class ProductController {
 
     @GetMapping
     public String productsPage(Model model) {
-        model.addAttribute("activePage", "Products");
+        model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());
         return "products";
     }
 
     @GetMapping("/{id}")
     public String productPage(@PathVariable Long id, Model model) {
-        model.addAttribute("activePage", "Products");
+        model.addAttribute("bannerPage", "Product");
         model.addAttribute("product", productService.findById(id).orElseThrow(() -> new NotFoundException(id.toString(), Product.class.getSimpleName())));
         return "product";
     }

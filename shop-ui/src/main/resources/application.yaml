@@ -32,8 +32,8 @@ spring:
 
 picture:
   storage:
-    type: database
-    path: C:\\Users\\ABtan\\Downloads
+    type: files
+    path: C:/Users/ABtan/OneDrive/CODDING/Java-programist/Java8Level/My-good-Shop/shop-ui/src/main/resources/static/picture
 
 #logging:
 #  level: debug

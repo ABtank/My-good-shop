@@ -4,26 +4,32 @@
 <body>
 <head th:fragment="head">
     <title>Shopin A Ecommerce Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
     <!-- Custom Theme files -->
     <!--theme-style-->
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Shopin Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndroId Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!--theme-style-->
-    <link th:href="@{/css/style4.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/style4.css}" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <!--- start-rate---->
     <script th:src="@{/js/jstarbox.js}"></script>
-    <link rel="stylesheet" th:href="@{/css/jstarbox.css}" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/css/jstarbox.css}" type="text/css" media="screen" charset="utf-8"/>
     <script type="text/javascript">
-        jQuery(function() {
-            jQuery('.starbox').each(function() {
+        jQuery(function () {
+            jQuery('.starbox').each(function () {
                 var starbox = jQuery(this);
                 starbox.starbox({
                     average: starbox.attr('data-start-value'),
@@ -32,10 +38,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     autoUpdateAverage: starbox.hasClass('autoupdate'),
                     buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
                     stars: starbox.attr('data-star-count') || 5
-                }).bind('starbox-value-changed', function(event, value) {
-                    if(starbox.hasClass('random')) {
+                }).bind('starbox-value-changed', function (event, value) {
+                    if (starbox.hasClass('random')) {
                         var val = Math.random();
-                        starbox.next().text(' '+val);
+                        starbox.next().text(' ' + val);
                         return val;
                     }
                 })
@@ -55,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="header-top">
             <div class="container">
                 <div class="col-sm-5 col-md-offset-2  header-login">
-                    <ul >
+                    <ul>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="register.html">Register</a></li>
                         <li><a href="checkout.html">Checkout</a></li>
@@ -63,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
 
                 <div class="col-sm-5 header-social">
-                    <ul >
+                    <ul>
                         <li><a href="#"><i></i></a></li>
                         <li><a href="#"><i class="ic1"></i></a></li>
                         <li><a href="#"><i class="ic2"></i></a></li>
@@ -72,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
 
                 </div>
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
             </div>
         </div>
 
@@ -85,7 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header nav_2">
-                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                                    data-target="#bs-megadropdown-tabs">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -99,7 +106,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li><a class="color" th:href="@{/}">Home</a></li>
 
                                 <li class="dropdown mega-dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<span
+                                            class="caret"></span></a>
                                     <div class="dropdown-menu ">
                                         <div class="menu-top">
                                             <div class="col1">
@@ -163,7 +171,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </li>
                                 <li class="dropdown mega-dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men<span
+                                            class="caret"></span></a>
                                     <div class="dropdown-menu mega-dropdown-menu">
                                         <div class="menu-top">
                                             <div class="col1">
@@ -227,10 +236,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                     </div>
                                 </li>
-                                <li><a class="color3" th:href="@{/products}">Products</a></li>
-                                <li><a class="color4" href="404.html">About</a></li>
-                                <li><a class="color5" href="typo.html">Short Codes</a></li>
-                                <li ><a class="color6" href="contact.html">Contact</a></li>
+                                <li class="" th:classappend="${activePage == 'Products'} ? active"><a class="color3"
+                                                                                                      th:href="@{/products}">Products</a>
+                                </li>
+                                <li class="" th:classappend="${activePage == 'About'} ? active"><a class="color4"
+                                                                                                   href="404.html">About</a>
+                                </li>
+                                <li class="" th:classappend="${activePage == 'Short Codes'} ? active"><a class="color5"
+                                                                                                         href="typo.html">Short
+                                    Codes</a></li>
+                                <li class="" th:classappend="${activePage == 'Contact'} ? active"><a class="color6"
+                                                                                                     href="contact.html">Contact</a>
+                                </li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
 
@@ -239,21 +256,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="col-sm-2 search-right">
                     <ul class="heart">
                         <li>
-                            <a href="wishlist.html" >
+                            <a href="wishlist.html">
                                 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                             </a></li>
-                        <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i></a></li>
+                        <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i
+                                class="glyphicon glyphicon-search"> </i></a></li>
                     </ul>
                     <div class="cart box_1">
                         <a href="checkout.html">
-                            <h3> <div class="total">
-                                <span class="simpleCart_total"></span></div>
+                            <h3>
+                                <div class="total">
+                                    <span class="simpleCart_total"></span></div>
                                 <img th:src="@{/images/cart.png}" alt=""/></h3>
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
                     </div>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
 
                     <!----->
 
@@ -265,13 +284,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="search-top">
                             <div class="login-search">
                                 <input type="submit" value="">
-                                <input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+                                <input type="text" value="Search.." onfocus="this.value = '';"
+                                       onblur="if (this.value == '') {this.value = 'Search..';}">
                             </div>
                             <p>Shopin</p>
                         </div>
                     </div>
                     <script>
-                        $(document).ready(function() {
+                        $(document).ready(function () {
                             $('.popup-with-zoom-anim').magnificPopup({
                                 type: 'inline',
                                 fixedContentPos: false,
@@ -294,5 +314,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 
 </head>
+
+<div th:fragment="banner_top" class="banner-top">
+    <div class="container">
+        <h1 th:text="${bannerPage}">Single</h1>
+        <em></em>
+        <h2><a th:href="@{/}">Home</a></h2>
+    </div>
+</div>
 </body>
 </html>

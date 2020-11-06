@@ -14,13 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head th:replace="fragments/header :: header"></head>
 
 <!--banner-->
-<div class="banner-top">
-    <div class="container">
-        <h1>404</h1>
-        <em></em>
-        <h2><a th:href="@{/}">Home</a><label>/</label>404</h2>
-    </div>
-</div>
+<div th:replace="fragments/header :: banner_top"></div>
 <!--login-->
 <div class="container">
     <div class="four">

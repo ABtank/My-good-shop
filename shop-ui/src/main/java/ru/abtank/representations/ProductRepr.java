@@ -21,6 +21,7 @@ public class ProductRepr {
     private Integer discount;
 
     private BigDecimal price;
+    private BigDecimal discountPrice;
 
     private String category;
 
@@ -144,5 +145,13 @@ public class ProductRepr {
 
     public void setPicturesId(List<Long> picturesId) {
         this.picturesId = picturesId;
+    }
+
+    public BigDecimal getDiscountPrice() {
+       return price.subtract(new BigDecimal(price.floatValue()*discount*0.01));
+    }
+
+    public void setDiscountPrice(BigDecimal discountPrice) {
+        this.discountPrice = discountPrice;
     }
 }

@@ -16,6 +16,7 @@ public class ErrorHandler {
     public ModelAndView notFoundExceptionHandler(NotFoundException ex) {
         ModelAndView modelAndView = new ModelAndView("404");
         modelAndView.getModel().put("exceptionMessage", ex.getMessage());
+        modelAndView.getModel().put("bannerPage", "404");
         return modelAndView;
     }
 
@@ -23,6 +24,7 @@ public class ErrorHandler {
     public ModelAndView internalServerExceptionHandler(ServerInternalException ex) {
         ModelAndView modelAndView = new ModelAndView("404");
         modelAndView.getModel().put("exceptionMessage", ex.getMessage());
+        modelAndView.getModel().put("bannerPage", "404");
         modelAndView.setStatus(HttpStatus.NOT_FOUND);
         return modelAndView;
     }
