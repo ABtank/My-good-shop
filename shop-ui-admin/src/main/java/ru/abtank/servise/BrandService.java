@@ -10,9 +10,9 @@ public interface BrandService {
 
     List<BrandRepr> findAll();
 
-    Optional<BrandRepr> findById(Long id);
+    Optional<BrandRepr> findById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     void save(BrandRepr brandRepr) throws IOException;
 }

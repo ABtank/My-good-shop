@@ -34,22 +34,8 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     @Transactional
-    public Optional<StatusRepr> findById(Long id) {
+    public Optional<StatusRepr> findById(Integer id) {
         return statusRepository.findById(id).map(StatusRepr::new);
     }
 
-    @Override
-    @Transactional
-    public void deleteById(Long id) {
-        statusRepository.deleteById(id);
-    }
-
-    @Override
-    @Transactional
-    public void save(StatusRepr statusRepr) throws IOException {
-        Status status = (statusRepr.getId() != null) ? statusRepository.findById(statusRepr.getId())
-                .orElseThrow(NotFoundException::new) : new Status();
-        status.setName(statusRepr.getName());
-        statusRepository.save(status);
-    }
 }

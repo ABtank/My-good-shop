@@ -9,5 +9,5 @@ public interface BrandService {
 
     List<BrandRepr> findAll();
 
-    Optional<BrandRepr> findById(Long id);
+    Optional<BrandRepr> findById(Integer id);
 }

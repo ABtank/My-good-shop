@@ -10,9 +10,5 @@ public interface StatusService {
 
     List<StatusRepr> findAll();
 
-    Optional<StatusRepr> findById(Long id);
-
-    void deleteById(Long id);
-
-    void save(StatusRepr statusRepr) throws IOException;
+    Optional<StatusRepr> findById(Integer id);
 }

@@ -28,7 +28,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Optional<BrandRepr> findById(Long id) {
+    public Optional<BrandRepr> findById(Integer id) {
         return brandRepository.findById(id).map(BrandRepr::new);
     }
 }

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.abtank.persist.model.ProductType;
 
 @Repository
-public interface ProductTypeRepository extends JpaRepository<ProductType, Long> {
+public interface ProductTypeRepository extends JpaRepository<ProductType, Integer> {
 }

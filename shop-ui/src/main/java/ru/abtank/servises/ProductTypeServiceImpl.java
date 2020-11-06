@@ -33,22 +33,8 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     @Transactional
-    public Optional<ProductTypeRepr> findById(Long id) {
+    public Optional<ProductTypeRepr> findById(Integer id) {
         return productTypeRepository.findById(id).map(ProductTypeRepr::new);
     }
 
-    @Override
-    @Transactional
-    public void deleteById(Long id) {
-        productTypeRepository.deleteById(id);
-    }
-
-    @Override
-    @Transactional
-    public void save(ProductTypeRepr productTypeRepr) {
-        ProductType productType = (productTypeRepr.getId() != null) ? productTypeRepository.findById(productTypeRepr.getId())
-                .orElseThrow(NotFoundException::new) : new ProductType();
-        productType.setName(productTypeRepr.getName());
-        productTypeRepository.save(productType);
-    }
 }

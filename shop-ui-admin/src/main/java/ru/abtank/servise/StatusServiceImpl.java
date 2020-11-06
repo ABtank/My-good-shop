@@ -34,13 +34,13 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     @Transactional
-    public Optional<StatusRepr> findById(Long id) {
+    public Optional<StatusRepr> findById(Integer id) {
         return statusRepository.findById(id).map(StatusRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         statusRepository.deleteById(id);
     }
 

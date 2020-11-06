@@ -34,7 +34,7 @@ public class CategoriesController {
     }
 
     @GetMapping("/{id}/update")
-    public String updateCategory(Model model, @PathVariable("id") Long id) {
+    public String updateCategory(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("actionPage", "Categories");
         model.addAttribute("update", true);
         model.addAttribute("category", categoryService.findById(id)
@@ -43,7 +43,7 @@ public class CategoriesController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public String deleteCategory(Model model, @PathVariable("id") Long id) {
+    public String deleteCategory(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("actionPage", "Categories");
         categoryService.deleteById(id);
         return "redirect:/categories";

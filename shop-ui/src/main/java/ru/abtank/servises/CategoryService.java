@@ -9,5 +9,5 @@ public interface CategoryService {
 
     List<CategoryRepr> findAll();
 
-    Optional<CategoryRepr> findById(Long id);
+    Optional<CategoryRepr> findById(Integer id);
 }

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.abtank.persist.model.Brand;
 
 @Repository
-public interface BrandRepository extends JpaRepository<Brand, Long> {
+public interface BrandRepository extends JpaRepository<Brand, Integer> {
 }

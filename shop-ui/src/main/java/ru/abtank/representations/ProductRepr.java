@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.math.BigDecimal.ROUND_DOWN;
+
 public class ProductRepr {
 
     private Long id;
@@ -149,7 +151,8 @@ public class ProductRepr {
     }
 
     public BigDecimal getDiscountPrice() {
-        return price.subtract(new BigDecimal(price.floatValue() * discount * 0.01));
+        discountPrice = price.subtract(new BigDecimal(price.floatValue() * discount * 0.01));
+        return discountPrice.setScale(2, ROUND_DOWN);
     }
 
     public void setDiscountPrice(BigDecimal discountPrice) {

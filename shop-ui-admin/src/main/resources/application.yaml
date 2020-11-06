@@ -33,7 +33,7 @@ spring:
 
 picture:
   storage:
-    type: files
+    type: database
     path: C:/Users/ABtan/OneDrive/CODDING/Java-programist/Java8Level/My-good-Shop/shop-ui/src/main/resources/static/picture
 
 #logging:

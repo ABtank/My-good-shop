@@ -34,13 +34,13 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     @Transactional
-    public Optional<ProductTypeRepr> findById(Long id) {
+    public Optional<ProductTypeRepr> findById(Integer id) {
         return productTypeRepository.findById(id).map(ProductTypeRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         productTypeRepository.deleteById(id);
     }
 

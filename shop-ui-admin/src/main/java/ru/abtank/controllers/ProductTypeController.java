@@ -35,7 +35,7 @@ public class ProductTypeController {
     }
 
     @GetMapping("/{id}/update")
-    public String updateProductTypes(Model model, @PathVariable("id") Long id) {
+    public String updateProductTypes(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Product_types");
         model.addAttribute("update", true);
         model.addAttribute("product_type", productTypeService.findById(id)
@@ -53,7 +53,7 @@ public class ProductTypeController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public String deleteProductTypes(Model model, @PathVariable("id") Long id) {
+    public String deleteProductTypes(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Product_types");
         productTypeService.deleteById(id);
         return "redirect:/product_types";

@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Optional<CategoryRepr> findById(Long id) {
+    public Optional<CategoryRepr> findById(Integer id) {
         return categoryRepository.findById(id).map(CategoryRepr::new);
     }
 }
