@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Status;
 import ru.abtank.persist.repositories.StatusRepository;
-import ru.abtank.representation.StatusRepr;
+import ru.abtank.representations.StatusRepr;
 
 import java.io.IOException;
 import java.util.List;

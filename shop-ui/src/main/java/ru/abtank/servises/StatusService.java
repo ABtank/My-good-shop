@@ -1,6 +1,6 @@
 package ru.abtank.servises;
 
-import ru.abtank.representation.StatusRepr;
+import ru.abtank.representations.StatusRepr;
 
 import java.io.IOException;
 import java.util.List;
