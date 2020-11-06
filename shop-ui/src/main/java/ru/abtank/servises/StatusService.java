@@ -1,4 +1,4 @@
-package ru.abtank.servise;
+package ru.abtank.servises;
 
 import ru.abtank.representation.StatusRepr;
 

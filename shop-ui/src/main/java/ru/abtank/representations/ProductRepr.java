@@ -1,6 +1,7 @@
 package ru.abtank.representations;
 
-import ru.abtank.persist.model.*;
+import ru.abtank.persist.model.Picture;
+import ru.abtank.persist.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -148,7 +149,7 @@ public class ProductRepr {
     }
 
     public BigDecimal getDiscountPrice() {
-       return price.subtract(new BigDecimal(price.floatValue()*discount*0.01));
+        return price.subtract(new BigDecimal(price.floatValue() * discount * 0.01));
     }
 
     public void setDiscountPrice(BigDecimal discountPrice) {

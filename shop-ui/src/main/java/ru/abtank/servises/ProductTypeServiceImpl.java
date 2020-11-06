@@ -1,4 +1,4 @@
-package ru.abtank.servise;
+package ru.abtank.servises;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,9 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.ProductType;
 import ru.abtank.persist.repositories.ProductTypeRepository;
-import ru.abtank.representation.ProductTypeRepr;
+import ru.abtank.representations.ProductTypeRepr;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,7 +45,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     @Transactional
-    public void save(ProductTypeRepr productTypeRepr) throws IOException {
+    public void save(ProductTypeRepr productTypeRepr) {
         ProductType productType = (productTypeRepr.getId() != null) ? productTypeRepository.findById(productTypeRepr.getId())
                 .orElseThrow(NotFoundException::new) : new ProductType();
         productType.setName(productTypeRepr.getName());
