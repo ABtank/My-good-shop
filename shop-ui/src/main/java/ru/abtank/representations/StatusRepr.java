@@ -4,7 +4,7 @@ import ru.abtank.persist.model.Status;
 
 public class StatusRepr {
 
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -16,11 +16,11 @@ public class StatusRepr {
         this.name = status.getName();
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
