@@ -10,17 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Product;
+import ru.abtank.representations.BrandRepr;
+import ru.abtank.representations.CategoryRepr;
+import ru.abtank.representations.ProductRepr;
 import ru.abtank.servises.*;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 
-    private ProductService productService;
-    private BrandService brandService;
-    private CategoryService categoryService;
-    private StatusService statusService;
-    private ProductTypeService productTypeService;
+    private final ProductService productService;
+    private final BrandService brandService;
+    private final CategoryService categoryService;
+    private final StatusService statusService;
+    private final ProductTypeService productTypeService;
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
@@ -36,20 +42,12 @@ public class ProductController {
     public String productsPage(Model model) {
         model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("brands", brandService.findAll());
-        model.addAttribute("product_types", productTypeService.findAll());
-        model.addAttribute("statuses", statusService.findAll());
         return "products";
     }
 
     @GetMapping("/{id}")
     public String productPage(@PathVariable Long id, Model model) {
         model.addAttribute("bannerPage", "Product");
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("brands", brandService.findAll());
-        model.addAttribute("product_types", productTypeService.findAll());
-        model.addAttribute("statuses", statusService.findAll());
         model.addAttribute("product", productService.findById(id).orElseThrow(() -> new NotFoundException(id.toString(), Product.class.getSimpleName())));
         return "product";
     }

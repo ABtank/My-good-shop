@@ -10,4 +10,6 @@ public interface BrandService {
     List<BrandRepr> findAll();
 
     Optional<BrandRepr> findById(Integer id);
+
+    Optional<BrandRepr> findByName(String name);
 }

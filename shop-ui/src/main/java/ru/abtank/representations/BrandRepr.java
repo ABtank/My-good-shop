@@ -2,6 +2,8 @@ package ru.abtank.representations;
 
 import ru.abtank.persist.model.Brand;
 
+import java.util.Objects;
+
 public class BrandRepr {
 
     private Integer id;
@@ -30,5 +32,19 @@ public class BrandRepr {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BrandRepr brandRepr = (BrandRepr) o;
+        return Objects.equals(id, brandRepr.id) &&
+                Objects.equals(name, brandRepr.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

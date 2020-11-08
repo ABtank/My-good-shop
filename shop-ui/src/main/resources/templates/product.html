@@ -22,9 +22,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-5 grid">
                 <div class="flexslider">
                     <ul class="slides">
-                        <th:block th:each="pic : ${product.picturesId}">
+                        <th:block th:each="pic : ${product.picturesId}" >
                             <li th:data-thumb="@{/picture/{pict}(pict = ${pic})}">
-                                <div class="thumb-image"><img th:src="@{/picture/{pict}(pict = ${pic})}"
+                                <div class="thumb-image"><img  th:src="@{/picture/{pict}(pict = ${pic})}"
                                                               data-imagezoom="true" class="img-responsive"></div>
                             </li>
                         </th:block>
@@ -122,7 +122,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <!---->
         </div>
         <!----->
-        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <th:block>
+            <div th:replace="fragments/sidebar :: sidebar"></div>
+        </th:block>
         <div class="clearfix"></div>
     </div>
 

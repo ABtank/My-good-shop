@@ -28,7 +28,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
 
         <!--sidebar-->
-        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <th:block>
+            <div th:replace="fragments/sidebar :: sidebar "></div>
+        </th:block>
+
         <div class="clearfix"></div>
         <!--//sidebar-->
 
