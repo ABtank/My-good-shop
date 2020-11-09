@@ -44,10 +44,11 @@ public class ProductController {
     @GetMapping
     public String productsPage(Model model,
                                @RequestParam(defaultValue = "1", name = "page") Integer page,
+                               @RequestParam(defaultValue = "6", name = "size") Integer size,
                                @RequestParam Map<String, String> params,
                                @RequestParam MultiValueMap<String, String> checkboxParams) {
         if(page<1) page=1;
-        Page<ProductRepr> productReprPage = productService.findAll(params, checkboxParams,page - 1, 9);
+        Page<ProductRepr> productReprPage = productService.findAll(params, checkboxParams,page - 1, size);
         model.addAttribute("productsPage", productReprPage);
         model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());
