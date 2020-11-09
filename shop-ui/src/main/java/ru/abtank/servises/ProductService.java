@@ -1,5 +1,6 @@
 package ru.abtank.servises;
 
+import org.springframework.data.domain.Page;
 import ru.abtank.persist.model.Product;
 import ru.abtank.representations.ProductRepr;
 
@@ -21,4 +22,5 @@ public interface ProductService {
     List<ProductRepr> findByBrand(String brand);
 
     List<ProductRepr> findByCategoryName(String category);
+    Page<ProductRepr> findAll (int page, int size);
 }

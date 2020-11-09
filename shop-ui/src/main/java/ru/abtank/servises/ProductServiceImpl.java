@@ -3,9 +3,13 @@ package ru.abtank.servises;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.abtank.persist.model.Product;
 import ru.abtank.persist.repositories.ProductRepository;
+import ru.abtank.persist.repositories.specification.ProductSpecification;
 import ru.abtank.representations.ProductRepr;
 
 import java.util.List;
@@ -60,5 +64,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductRepr> findByBrandNameAndCategoryNameAndAndTypeName(String brand, String category, String type) {
         return productRepository.findByBrandNameAndCategoryNameAndAndTypeName(brand, category, type).stream().map(ProductRepr::new).collect(Collectors.toList());
+    }
+
+    public Page<ProductRepr> findAll (int page, int size) {
+        Specification<Product> spec = ProductSpecification.literalTrue();
+        return productRepository.findAll(spec, PageRequest.of(page, size)).map(ProductRepr::new);
     }
 }

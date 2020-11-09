@@ -7,6 +7,7 @@
 
 <div th:fragment="sidebar" class="col-md-3 product-bottom product-at">
     <!--categories-->
+
     <div class="rsidebar span_1_of_left">
         <h4 class="cate">Categories</h4>
         <ul class="menu-drop" th:each="cat : ${categoryAndBrands}">
@@ -40,43 +41,58 @@
         });
     </script>
     <!--//menu-->
-    <section class="sky-form">
-        <h4 class="cate">Discounts</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Upto - 10% (20)</label>
+    <form method="get" th:action="@{/products}">
+        <section class="sky-form">
+            <h4 class="cate">Discounts</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4">
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'50%'}"
+                                                th:value="${50}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'30%'}"
+                                                th:value="${30}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'15%'}"
+                                                th:value="${15}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'Upto - 10%'}"
+                                                th:value="${10}"><i></i></label>
+                </div>
             </div>
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>40% - 50% (5)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (7)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (2)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other(50)</label>
+        </section>
+        <section class="sky-form">
+            <h4 class="cate">Statuses</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="status : ${statuses}">
+                    <label class="radio">
+                        <input type="radio" name="radio_status" th:value="${status.id}" th:text="${status.name}">
+                        <i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
             </div>
-        </div>
-    </section>
-
-
-    <!---->
-    <section class="sky-form">
-        <h4 class="cate">Type</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4" th:each="type : ${product_types}">
-                <label class="checkbox"><input type="checkbox" name="checkbox" th:text="${type.name}"><i ></i></label>
+        </section>
+        <!---->
+        <section class="sky-form">
+            <h4 class="cate">Type</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="type : ${product_types}">
+                    <label class="checkbox"><input type="checkbox" name="checkbox_type"
+                                                   th:text="${type.name}" th:value="${type.id}"><i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
             </div>
-        </div>
-    </section>
-    <section class="sky-form">
-        <h4 class="cate">Brand</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"
-                                               checked=""><i></i>Roadstar</label>
+        </section>
+        <section class="sky-form">
+            <h4 class="cate">Brand</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="brand : ${brands}">
+                    <label class="checkbox"><input type="checkbox" name="checkbox_brand"
+                                                   th:text="${brand.name}" th:value="${brand.id}"><i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
             </div>
-            <div class="col col-4" th:each="br : ${brands}">
-                <label class="checkbox"><input type="checkbox" name="checkbox" th:text="${br.name}"><i ></i></label>
-            </div>
-        </div>
-    </section>
+        </section>
+    </form>
 </div>
 
 </html>

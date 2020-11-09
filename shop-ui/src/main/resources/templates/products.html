@@ -20,11 +20,47 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="col-md-9">
             <div class="mid-popular">
-                <th:block th:each="prod : ${products}">
+                <th:block th:each="prod : ${productsPage.content}">
                     <div th:replace="fragments/products_list :: simple_cart_product (${prod})"></div>
                 </th:block>
+
             </div>
             <div class="clearfix"></div>
+            <div class="col-md-9">
+            <nav class="nav navbar-nav nav_1" th:if="${productsPage.totalPages > 1}">
+                <ul class="nav navbar-nav nav_1">
+                    <li
+                        th:classappend="${productsPage.number == 0} ? 'disabled'">
+                        <a class="color"
+                           th:href="@{products(page=${1}, size=${productsPage.size})}">Start</a>
+                    </li>
+                    <li
+                        th:classappend="${productsPage.number == 0} ? 'disabled'">
+                        <a class="color"
+                           th:href="@{products(page=${productsPage.number}, size=${productsPage.size})}"
+                           tabindex="-1">Previous</a>
+                    </li>
+                    <li th:each="num: ${#numbers.sequence(1,productsPage.totalPages)}"
+                        class="page-item"
+                        th:classappend="${num == productsPage.number + 1} ? 'active'">
+                        <a class="color"
+                           th:text="${num}"
+                           th:href="@{products(page=${num}, size=${productsPage.size})}">1</a>
+                    </li>
+                    <li
+                        th:classappend="${productsPage.number + 1 == productsPage.totalPages} ? 'disabled'">
+                        <a class="color"
+                           th:href="@{products(page=${productsPage.number+2}, size=${productsPage.size})}"
+                           tabindex="-1">Next</a>
+                    </li>
+                    <li
+                        th:classappend="${productsPage.number + 1 == productsPage.totalPages} ? 'disabled'">
+                        <a class="color"
+                           th:href="@{products(page=${productsPage.totalPages}, size=${productsPage.size})}">End</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         </div>
 
         <!--sidebar-->

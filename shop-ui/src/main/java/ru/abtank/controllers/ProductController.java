@@ -3,11 +3,13 @@ package ru.abtank.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Product;
 import ru.abtank.representations.BrandRepr;
@@ -39,7 +41,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public String productsPage(Model model) {
+    public String productsPage(Model model, @RequestParam(defaultValue = "1", name = "page") Integer page) {
+        if(page<1) page=1;
+        Page<ProductRepr> productReprPage = productService.findAll(page - 1, 6);
+        model.addAttribute("productsPage", productReprPage);
         model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());
         return "products";
