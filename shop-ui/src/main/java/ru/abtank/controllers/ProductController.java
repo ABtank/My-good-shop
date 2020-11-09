@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +42,12 @@ public class ProductController {
     }
 
     @GetMapping
-    public String productsPage(Model model, @RequestParam(defaultValue = "1", name = "page") Integer page) {
+    public String productsPage(Model model,
+                               @RequestParam(defaultValue = "1", name = "page") Integer page,
+                               @RequestParam Map<String, String> params,
+                               @RequestParam MultiValueMap<String, String> checkboxParams) {
         if(page<1) page=1;
-        Page<ProductRepr> productReprPage = productService.findAll(page - 1, 6);
+        Page<ProductRepr> productReprPage = productService.findAll(params, checkboxParams,page - 1, 6);
         model.addAttribute("productsPage", productReprPage);
         model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());

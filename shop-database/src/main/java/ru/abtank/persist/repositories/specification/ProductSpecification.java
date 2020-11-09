@@ -1,7 +1,7 @@
 package ru.abtank.persist.repositories.specification;
 
 import org.springframework.data.jpa.domain.Specification;
-import ru.abtank.persist.model.Product;
+import ru.abtank.persist.model.*;
 
 import java.math.BigDecimal;
 
@@ -23,20 +23,20 @@ public final class ProductSpecification {
         return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("price"), price);
     }
 
-    public static Specification<Product> categoryLike(Integer category_id) {
-        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("category_id"), category_id);
+    public static Specification<Product> categoryLike(Category category) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("category"), category);
     }
 
-    public static Specification<Product> brandLike(Integer brand_id) {
-        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("brand_id"), brand_id);
+    public static Specification<Product> brandLike(Brand brand) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("brand"), brand);
     }
 
-    public static Specification<Product> typeLike(Integer type_id) {
-        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("type_id"), type_id);
+    public static Specification<Product> typeLike(ProductType type) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("type"), type);
     }
 
-    public static Specification<Product> statusLike(Integer status_id) {
-        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("status_id"), status_id);
+    public static Specification<Product> statusLike(Status status) {
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("status"), status);
     }
 
     public static Specification<Product> afterMinPrice(BigDecimal minPrice) {
