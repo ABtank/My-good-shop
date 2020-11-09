@@ -113,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <div class="h_nav">
                                                     <h4 th:text="${cat.key.name +' ('+cat.value.size()+')'}">Submenu1</h4>
                                                     <ul th:each="brand : ${cat.value}">
-                                                        <li><a href="product.html"
+                                                        <li><a th:href="@{'/products'+'?radio_category='+${cat.key.id}+'&radio_brand='+${brand.id}}"
                                                                th:text="${brand.name}">Accessories</a></li>
                                                     </ul>
                                                 </div>
@@ -126,13 +126,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                                       th:href="@{/products}">Products</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'About'} ? active"><a class="color4"
-                                                                                                   href="404.html">About</a>
+                                                                                                   th:href="@{404}">Error</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'Short Codes'} ? active"><a class="color5"
-                                                                                                         href="typo.html">Short
+                                                                                                         th:href="@{/typo}">Short
                                     Codes</a></li>
                                 <li class="" th:classappend="${activePage == 'Contact'} ? active"><a class="color6"
-                                                                                                     href="contact.html">Contact</a>
+                                                                                                     th:href="@{contact}">Contact</a>
                                 </li>
                             </ul>
                         </div><!-- /.navbar-collapse -->

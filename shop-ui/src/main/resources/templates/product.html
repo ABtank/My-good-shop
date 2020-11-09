@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-7 single-top-in">
                 <div class="span_2_of_a1 simpleCart_shelfItem">
                     <h3 th:text="${product.name}">Nam liber tempor cum</h3>
-                    <p class="in-para"> There are many variations of passages of Lorem Ipsum.</p>
+                    <p class="in-para" th:text="${product.brand}"> There are many variations of passages of Lorem Ipsum.</p>
                     <div class="price_single">
                         <span class="reducedfrom item_price" th:text="${product.discountPrice}">$140.00</span>
                         <a href="#">click for offer</a>

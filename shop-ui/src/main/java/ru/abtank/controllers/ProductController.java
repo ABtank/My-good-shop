@@ -47,7 +47,7 @@ public class ProductController {
                                @RequestParam Map<String, String> params,
                                @RequestParam MultiValueMap<String, String> checkboxParams) {
         if(page<1) page=1;
-        Page<ProductRepr> productReprPage = productService.findAll(params, checkboxParams,page - 1, 6);
+        Page<ProductRepr> productReprPage = productService.findAll(params, checkboxParams,page - 1, 9);
         model.addAttribute("productsPage", productReprPage);
         model.addAttribute("bannerPage", "Products");
         model.addAttribute("products", productService.findAll());

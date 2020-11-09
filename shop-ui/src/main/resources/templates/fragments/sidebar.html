@@ -14,7 +14,7 @@
             <li class="item"><a th:href="@{/products}" th:text="${cat.key.name}">Men </a>
                 <ul class="cute">
                     <th:block th:each="brand : ${cat.value}">
-                        <li class="subitem1"><a href="products.html" th:text="${brand.name}">Cute Kittens </a></li>
+                        <li class="subitem1"><a th:href="@{'/products'+'?radio_category='+${cat.key.id}+'&radio_brand='+${brand.id}}" th:text="${brand.name}">Cute Kittens </a></li>
                     </th:block>
                 </ul>
             </li>

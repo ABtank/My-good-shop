@@ -13,4 +13,17 @@ public class MainController {
     public String indexPage() {
         return "index";
     }
+
+    @GetMapping("/404")
+    public String errorPage() {
+        return "404";
+    }
+    @GetMapping("/typo")
+    public String typoPage() {
+        return "typo";
+    }
+    @GetMapping("/contact")
+    public String contactPage() {
+        return "contact";
+    }
 }
