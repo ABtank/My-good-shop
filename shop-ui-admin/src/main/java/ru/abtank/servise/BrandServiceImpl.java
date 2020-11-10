@@ -34,13 +34,13 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     @Transactional
-    public Optional<BrandRepr> findById(Long id) {
+    public Optional<BrandRepr> findById(Integer id) {
         return brandRepository.findById(id).map(BrandRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         brandRepository.deleteById(id);
     }
 

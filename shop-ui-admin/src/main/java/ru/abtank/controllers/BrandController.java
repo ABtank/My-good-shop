@@ -33,7 +33,7 @@ public class BrandController {
     }
 
     @GetMapping("/{id}/update")
-    public String updateBrand(Model model, @PathVariable("id") Long id) {
+    public String updateBrand(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Brands");
         model.addAttribute("update", true);
         model.addAttribute("brand", brandService.findById(id)
@@ -51,7 +51,7 @@ public class BrandController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public String deleteBrand(Model model, @PathVariable("id") Long id) {
+    public String deleteBrand(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Brands");
         brandService.deleteById(id);
         return "redirect:/brands";

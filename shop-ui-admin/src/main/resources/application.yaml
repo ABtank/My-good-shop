@@ -1,5 +1,5 @@
 server:
-  port: 8189
+  port: 8888
   servlet:
     context-path: /store
 
@@ -34,7 +34,7 @@ spring:
 picture:
   storage:
     type: database
-    path: C:\\Users\\ABtan\\Downloads
+    path: C:/Users/ABtan/OneDrive/CODDING/Java-programist/Java8Level/My-good-Shop/shop-ui/src/main/resources/static/picture
 
 #logging:
 #  level: debug

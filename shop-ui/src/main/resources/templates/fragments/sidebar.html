@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+</body>
+
+<div th:fragment="sidebar" class="col-md-3 product-bottom product-at">
+    <!--categories-->
+
+    <div class="rsidebar span_1_of_left">
+        <h4 class="cate">Categories</h4>
+        <ul class="menu-drop" th:each="cat : ${categoryAndBrands}">
+            <li class="item"><a th:href="@{/products}" th:text="${cat.key.name}">Men </a>
+                <ul class="cute">
+                    <th:block th:each="brand : ${cat.value}">
+                        <li class="subitem1"><a th:href="@{'/products'+'?radio_category='+${cat.key.id}+'&radio_brand='+${brand.id}}" th:text="${brand.name}">Cute Kittens </a></li>
+                    </th:block>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!--initiate accordion-->
+    <script type="text/javascript">
+        $(function () {
+            var menu_ul = $('.menu-drop > li > ul'),
+                menu_a = $('.menu-drop > li > a');
+            menu_ul.hide();
+            menu_a.click(function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass('active')) {
+                    menu_a.removeClass('active');
+                    menu_ul.filter(':visible').slideUp('normal');
+                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                } else {
+                    $(this).removeClass('active');
+                    $(this).next().stop(true, true).slideUp('normal');
+                }
+            });
+
+        });
+    </script>
+    <!--//menu-->
+    <form method="get" th:action="@{/products}">
+        <section class="sky-form">
+            <h4 class="cate">Discounts</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4">
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'50%'}"
+                                                th:value="${50}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'30%'}"
+                                                th:value="${30}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'15%'}"
+                                                th:value="${15}"><i></i></label>
+                    <label class="radio"><input type="radio" name="radio_discount" th:text="${'Upto - 10%'}"
+                                                th:value="${10}"><i></i></label>
+                </div>
+            </div>
+        </section>
+        <section class="sky-form">
+            <h4 class="cate">Statuses</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="status : ${statuses}">
+                    <label class="radio">
+                        <input type="radio" name="radio_status" th:value="${status.id}" th:text="${status.name}">
+                        <i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <!---->
+        <section class="sky-form">
+            <h4 class="cate">Type</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="type : ${product_types}">
+                    <label class="checkbox"><input type="checkbox" name="checkbox_type"
+                                                   th:text="${type.name}" th:value="${type.id}"><i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <section class="sky-form">
+            <h4 class="cate">Brand</h4>
+            <div class="row row1 scroll-pane">
+                <div class="col col-4" th:each="brand : ${brands}">
+                    <label class="checkbox"><input type="checkbox" name="checkbox_brand"
+                                                   th:text="${brand.name}" th:value="${brand.id}"><i></i></label>
+                </div>
+                <button type="submit" class="btn btn-1 btn-success">Submit</button>
+                <div class="clearfix"></div>
+            </div>
+        </section>
+    </form>
+</div>
+
+</html>

@@ -34,7 +34,7 @@ public class StatusController {
     }
 
     @GetMapping("/{id}/update")
-    public String updateStatus(Model model, @PathVariable("id") Long id) {
+    public String updateStatus(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Statuses");
         model.addAttribute("update", true);
         model.addAttribute("status", statusService.findById(id)
@@ -52,7 +52,7 @@ public class StatusController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public String deleteStatus(Model model, @PathVariable("id") Long id) {
+    public String deleteStatus(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("activePage", "Statuses");
         statusService.deleteById(id);
         return "redirect:/statuses";

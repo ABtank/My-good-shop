@@ -1,0 +1,164 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<head th:replace="fragments/header :: head"></head>
+
+<!--header-->
+<head th:replace="fragments/header :: header"></head>
+
+<!--banner-->
+<div th:replace="fragments/header :: banner_top"></div>
+<div class="single">
+
+    <div class="container">
+        <div class="col-md-9">
+            <div class="col-md-5 grid">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <th:block th:each="pic : ${product.picturesId}" >
+                            <li th:data-thumb="@{/picture/{pict}(pict = ${pic})}">
+                                <div class="thumb-image"><img  th:src="@{/picture/{pict}(pict = ${pic})}"
+                                                              data-imagezoom="true" class="img-responsive"></div>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 single-top-in">
+                <div class="span_2_of_a1 simpleCart_shelfItem">
+                    <h3 th:text="${product.name}">Nam liber tempor cum</h3>
+                    <p class="in-para" th:text="${product.brand}"> There are many variations of passages of Lorem Ipsum.</p>
+                    <div class="price_single">
+                        <span class="reducedfrom item_price" th:text="${product.discountPrice}">$140.00</span>
+                        <a href="#">click for offer</a>
+                        <div class="clearfix"></div>
+                    </div>
+                    <h4 class="quick">Quick Overview:</h4>
+                    <p class="quick_desc" th:text="${product.quickDescription}"> Nam liber tempor cum soluta nobis
+                        eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi
+                        non habent claritatem insitam; es</p>
+                    <div class="wish-list">
+                        <ul>
+                            <li class="wish"><a href="#"><span class="glyphicon glyphicon-check"
+                                                               aria-hidden="true"></span>Add to Wishlist</a></li>
+                            <li class="compare"><a href="#"><span class="glyphicon glyphicon-resize-horizontal"
+                                                                  aria-hidden="true"></span>Add to Compare</a></li>
+                        </ul>
+                    </div>
+                    <div class="quantity">
+                        <div class="quantity-select">
+                            <div class="entry value-minus">&nbsp;</div>
+                            <div class="entry value"><span>1</span></div>
+                            <div class="entry value-plus active">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!--quantity-->
+                    <script>
+                        $('.value-plus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
+                            divUpd.text(newVal);
+                        });
+
+                        $('.value-minus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
+                            if (newVal >= 1) divUpd.text(newVal);
+                        });
+                    </script>
+                    <!--quantity-->
+
+                    <a href="#" class="add-to item_add hvr-skew-backward">Add to cart</a>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+            <!---->
+            <div class="tab-head">
+                <nav class="nav-sidebar">
+                    <ul class="nav tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Product Description</a></li>
+                    </ul>
+                </nav>
+                <div class="tab-content one">
+                    <div class="tab-pane active text-style" id="tab1">
+                        <div class="facts">
+                            <p th:text="${product.description}"> There are many variations of passages of Lorem Ipsum
+                                available, but the majority have suffered alteration in some form, by injected humour,
+                                or randomised words which don't look even slightly believable. If you are going to use a
+                                passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
+                                the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
+                                predefined chunks as necessary, making this the first true generator on the Internet. It
+                                uses a dictionary of over 200 Latin words, combined </p>
+                            <ul>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Research</li>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Design and
+                                    Development
+                                </li>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Porting and
+                                    Optimization
+                                </li>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>System integration
+                                </li>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Verification,
+                                    Validation and Testing
+                                </li>
+                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Maintenance and
+                                    Support
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!---->
+        </div>
+        <!----->
+        <th:block>
+            <div th:replace="fragments/sidebar :: sidebar"></div>
+        </th:block>
+        <div class="clearfix"></div>
+    </div>
+
+    <!--brand-->
+    <div class="container">
+        <div th:replace="fragments/brand :: brand_grid"></div>
+    </div>
+    <!--//brand-->
+</div>
+
+<!--//content-->
+<!--//footer-->
+<div th:replace="fragments/footer :: footer"></div>
+<!--//footer-->
+<script th:src="@{/js/imagezoom.js}"></script>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script defer th:src="@{/js/jquery.flexslider.js}"></script>
+<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" media="screen"/>
+
+<script>
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
+
+<script th:src="@{/js/simpleCart.min.js}"></script>
+<!-- slide -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

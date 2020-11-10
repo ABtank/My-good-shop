@@ -24,6 +24,7 @@ public class PictureServiceBlobImpl implements PictureService{
 
     @Override
     public Optional<String> getPictureContentTypeById(long id) {
+
         return pictureRepository.findById(id)
                 .map(Picture::getContentType);
     }

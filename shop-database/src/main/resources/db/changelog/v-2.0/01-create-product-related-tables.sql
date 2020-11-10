@@ -1,6 +1,6 @@
 CREATE TABLE brands
 (
-    id   bigserial PRIMARY KEY,
+    id   serial PRIMARY KEY,
     name varchar(50) NOT NULL UNIQUE
 );
 GO
@@ -36,7 +36,7 @@ CREATE TABLE products
     discount    smallint CHECK (discount between 0 AND 100) DEFAULT (0),
     price       numeric(19, 2)                              DEFAULT NULL,
     category_id int                                                     NOT NULL,
-    brand_id    bigint                                                  NOT NULL,
+    brand_id    int                                                     NOT NULL,
     type_id     int                                                     NOT NULL,
     status_id   int                                         DEFAULT (1) NOT NULL,
     FOREIGN KEY (brand_id) REFERENCES brands (id),

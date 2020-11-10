@@ -34,13 +34,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public Optional<CategoryRepr> findById(Long id) {
+    public Optional<CategoryRepr> findById(Integer id) {
         return categoryRepository.findById(id).map(CategoryRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         categoryRepository.deleteById(id);
     }
 

@@ -1,6 +1,5 @@
 package ru.abtank.servise;
 
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.RoleRepr;
 
 import java.io.IOException;

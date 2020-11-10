@@ -10,9 +10,9 @@ public interface CategoryService {
 
     List<CategoryRepr> findAll();
 
-    Optional<CategoryRepr> findById(Long id);
+    Optional<CategoryRepr> findById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     void save(CategoryRepr categoryRepr) throws IOException;
 }

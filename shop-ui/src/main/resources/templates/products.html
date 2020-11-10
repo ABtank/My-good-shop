@@ -1,0 +1,83 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<head th:replace="fragments/header :: head"></head>
+
+<!--header-->
+<head th:replace="fragments/header :: header"></head>
+
+<!--banner-->
+<div th:replace="fragments/header :: banner_top"></div>
+<!--content-->
+<div class="product">
+    <div class="container">
+        <div class="col-md-9">
+            <div class="mid-popular">
+                <th:block th:each="prod : ${productsPage.content}">
+                    <div th:replace="fragments/products_list :: simple_cart_product (${prod})"></div>
+                </th:block>
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-9">
+            <nav class="nav navbar-nav nav_1" th:if="${productsPage.totalPages > 1}">
+                <ul class="nav navbar-nav nav_1">
+                    <li
+                        th:classappend="${productsPage.isFirst() ? 'disabled':''}">
+                        <a class="color"
+                           th:href="@{products(page=${productsPage.number}, size=${productsPage.size})}"
+                           tabindex="-1">Previous</a>
+                    </li>
+                    <li th:each="num: ${#numbers.sequence(productsPage.number + 1,(productsPage.number + 3)<productsPage.totalPages? (productsPage.number + 3):productsPage.totalPages)}"
+                        class="page-item"
+                        th:classappend="${num == productsPage.number + 1} ? 'active'">
+                        <a class="color"
+                           th:text="${num}"
+                           th:href="@{products(page=${num}, size=${productsPage.size})}">1</a>
+                    </li>
+                    <li
+                        th:classappend="${productsPage.isLast() ? 'disabled':''}">
+                        <a class="color"
+                           th:href="@{products(page=${productsPage.number+2}, size=${productsPage.size})}"
+                           tabindex="-1">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+
+        <!--sidebar-->
+        <th:block>
+            <div th:replace="fragments/sidebar :: sidebar "></div>
+        </th:block>
+
+        <div class="clearfix"></div>
+        <!--//sidebar-->
+
+    </div>
+    <!--products-->
+
+    <!--//products-->
+    <!--brand-->
+    <div class="container">
+        <script th:replace="fragments/brand :: brand_grid"></script>
+    </div>
+    <!--//brand-->
+</div>
+<!--//content-->
+<!--//footer-->
+<div th:replace="fragments/footer :: footer"></div>
+<!--//footer-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script th:replace="fragments/footer :: scripts"></script>
+<!--light-box-files -->
+<script th:replace="fragments/footer :: light_box_files"></script>
+</body>
+</html>

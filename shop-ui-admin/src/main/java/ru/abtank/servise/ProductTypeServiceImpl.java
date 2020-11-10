@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.abtank.exceptions.NotFoundException;
-import ru.abtank.persist.model.Brand;
 import ru.abtank.persist.model.ProductType;
-import ru.abtank.persist.repositories.BrandRepository;
 import ru.abtank.persist.repositories.ProductTypeRepository;
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.ProductTypeRepr;
 
 import java.io.IOException;
@@ -37,13 +34,13 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     @Transactional
-    public Optional<ProductTypeRepr> findById(Long id) {
+    public Optional<ProductTypeRepr> findById(Integer id) {
         return productTypeRepository.findById(id).map(ProductTypeRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         productTypeRepository.deleteById(id);
     }
 

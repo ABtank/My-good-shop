@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.abtank.exceptions.NotFoundException;
-import ru.abtank.persist.model.Brand;
 import ru.abtank.persist.model.Status;
-import ru.abtank.persist.repositories.BrandRepository;
 import ru.abtank.persist.repositories.StatusRepository;
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.StatusRepr;
 
 import java.io.IOException;
@@ -37,13 +34,13 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     @Transactional
-    public Optional<StatusRepr> findById(Long id) {
+    public Optional<StatusRepr> findById(Integer id) {
         return statusRepository.findById(id).map(StatusRepr::new);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         statusRepository.deleteById(id);
     }
 

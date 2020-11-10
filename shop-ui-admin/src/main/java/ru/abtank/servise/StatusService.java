@@ -1,6 +1,5 @@
 package ru.abtank.servise;
 
-import ru.abtank.representation.BrandRepr;
 import ru.abtank.representation.StatusRepr;
 
 import java.io.IOException;
@@ -11,9 +10,9 @@ public interface StatusService {
 
     List<StatusRepr> findAll();
 
-    Optional<StatusRepr> findById(Long id);
+    Optional<StatusRepr> findById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     void save(StatusRepr statusRepr) throws IOException;
 }

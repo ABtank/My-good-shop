@@ -1,7 +1,6 @@
 package ru.abtank.servise;
 
 import ru.abtank.representation.BrandRepr;
-import ru.abtank.representation.ProductRepr;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,9 +10,9 @@ public interface BrandService {
 
     List<BrandRepr> findAll();
 
-    Optional<BrandRepr> findById(Long id);
+    Optional<BrandRepr> findById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     void save(BrandRepr brandRepr) throws IOException;
 }
