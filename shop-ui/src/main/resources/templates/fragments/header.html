@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul>
                         <li><a href="login.html">Login</a></li>
                         <li><a href="register.html">Register</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a th:href="@{/cart}">Checkout</a></li>
                     </ul>
                 </div>
 
@@ -105,9 +105,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <ul class="nav navbar-nav nav_1">
                                 <li><a class="color" th:href="@{/}">Home</a></li>
                                 <li class="dropdown mega-dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" th:text="${'Categories ('+count_categories+')'}">Categories<span
+                                    <a href="#" class="color1 dropdown-toggle" data-toggle="dropdown" th:text="${'Categories ('+count_categories+')'}">Categories<span
                                             class="caret"></span></a>
-                                    <div class="dropdown-menu mega-dropdown-menu">
+                                    <div class="dropdown-menu">
                                         <div class="menu-top">
                                             <div class="col1" th:each="cat : ${categoryAndBrands}">
                                                 <div class="h_nav">
@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 class="glyphicon glyphicon-search"> </i></a></li>
                     </ul>
                     <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a th:href="@{/cart}">
                             <h3>
                                 <div class="total">
                                     <span class="simpleCart_total"></span></div>

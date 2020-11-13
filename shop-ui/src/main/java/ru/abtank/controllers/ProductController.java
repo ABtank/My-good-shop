@@ -44,7 +44,7 @@ public class ProductController {
     @GetMapping
     public String productsPage(Model model,
                                @RequestParam(defaultValue = "1", name = "page") Integer page,
-                               @RequestParam(defaultValue = "6", name = "size") Integer size,
+                               @RequestParam(defaultValue = "4", name = "size") Integer size,
                                @RequestParam Map<String, String> params,
                                @RequestParam MultiValueMap<String, String> checkboxParams) {
         if(page<1) page=1;

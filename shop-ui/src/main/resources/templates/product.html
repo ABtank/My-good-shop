@@ -73,7 +73,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </script>
                     <!--quantity-->
 
-                    <a href="#" class="add-to item_add hvr-skew-backward">Add to cart</a>
+                    <form th:action="@{/cart}" th:method="post">
+                        <input type="hidden" name="qty" value="1"/>
+                        <input type="hidden" name="productId" th:value="${product.id}">
+                    <button href="#" class="add-to item_add hvr-skew-backward">Add to cart</button>
+                    </form>
                     <div class="clearfix"></div>
                 </div>
 
