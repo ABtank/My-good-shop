@@ -1,5 +1,7 @@
 package ru.abtank.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import ru.abtank.servises.model.LineItem;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
+
+    private final Logger logger = LoggerFactory.getLogger(CartController.class);
 
     private final CartService cartService;
 
@@ -35,6 +39,7 @@ public class CartController {
 
     @PostMapping
     public String updateCart(LineItem lineItem) {
+        logger.info("lineItem qty {} productId {}", lineItem.getQty(), lineItem.getProductId());
         lineItem.setProductRepr(productService.findById(lineItem.getProductId())
                 .orElseThrow(IllegalArgumentException::new));
         cartService.updateCart(lineItem);

@@ -22,9 +22,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-5 grid">
                 <div class="flexslider">
                     <ul class="slides">
-                        <th:block th:each="pic : ${product.picturesId}" >
+                        <th:block th:each="pic : ${product.picturesId}">
                             <li th:data-thumb="@{/picture/{pict}(pict = ${pic})}">
-                                <div class="thumb-image"><img  th:src="@{/picture/{pict}(pict = ${pic})}"
+                                <div class="thumb-image"><img th:src="@{/picture/{pict}(pict = ${pic})}"
                                                               data-imagezoom="true" class="img-responsive"></div>
                             </li>
                         </th:block>
@@ -34,7 +34,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-md-7 single-top-in">
                 <div class="span_2_of_a1 simpleCart_shelfItem">
                     <h3 th:text="${product.name}">Nam liber tempor cum</h3>
-                    <p class="in-para" th:text="${product.brand}"> There are many variations of passages of Lorem Ipsum.</p>
+                    <p class="in-para" th:text="${product.brand}"> There are many variations of passages of Lorem
+                        Ipsum.</p>
                     <div class="price_single">
                         <span class="reducedfrom item_price" th:text="${product.discountPrice}">$140.00</span>
                         <a href="#">click for offer</a>
@@ -52,31 +53,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                                   aria-hidden="true"></span>Add to Compare</a></li>
                         </ul>
                     </div>
-                    <div class="quantity">
-                        <div class="quantity-select">
-                            <div class="entry value-minus">&nbsp;</div>
-                            <div class="entry value"><span>1</span></div>
-                            <div class="entry value-plus active">&nbsp;</div>
+
+                    <form th:action="@{/cart}" th:method="POST">
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <input class="entry value" type="number" name="qty" value="1" id="qty"/>
+                            </div>
                         </div>
-                    </div>
-                    <!--quantity-->
-                    <script>
-                        $('.value-plus').on('click', function () {
-                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
-                            divUpd.text(newVal);
-                        });
-
-                        $('.value-minus').on('click', function () {
-                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
-                            if (newVal >= 1) divUpd.text(newVal);
-                        });
-                    </script>
-                    <!--quantity-->
-
-                    <form th:action="@{/cart}" th:method="post">
-                        <input type="hidden" name="qty" value="1"/>
                         <input type="hidden" name="productId" th:value="${product.id}">
-                    <button href="#" class="add-to item_add hvr-skew-backward">Add to cart</button>
+                        <button href="#" class="add-to item_add hvr-skew-backward">Add to cart</button>
                     </form>
                     <div class="clearfix"></div>
                 </div>
@@ -100,26 +85,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat
                                 predefined chunks as necessary, making this the first true generator on the Internet. It
                                 uses a dictionary of over 200 Latin words, combined </p>
-                            <ul>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Research</li>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Design and
-                                    Development
-                                </li>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Porting and
-                                    Optimization
-                                </li>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>System integration
-                                </li>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Verification,
-                                    Validation and Testing
-                                </li>
-                                <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Maintenance and
-                                    Support
-                                </li>
-                            </ul>
                         </div>
                     </div>
-
                 </div>
                 <div class="clearfix"></div>
             </div>

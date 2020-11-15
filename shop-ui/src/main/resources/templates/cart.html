@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <head th:replace="fragments/header :: head"></head>
 
@@ -16,72 +16,92 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--banner-->
 <div th:replace="fragments/header :: banner_top"></div>
 <!--login-->
-	<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-<script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-						$('.cart-header1').fadeOut('slow', function(c){
-							$('.cart-header1').remove();
-						});
-						});	  
-					});
-			   </script>
-			   <script>$(document).ready(function(c) {
-					$('.close3').on('click', function(c){
-						$('.cart-header2').fadeOut('slow', function(c){
-							$('.cart-header2').remove();
-						});
-						});	  
-					});
-			   </script>
+<script>$(document).ready(function (c) {
+    $('.close1').on('click', function (c) {
+        $('.cart-header').fadeOut('slow', function (c) {
+            $('.cart-header').remove();
+        });
+    });
+});
+</script>
+<script>$(document).ready(function (c) {
+    $('.close2').on('click', function (c) {
+        $('.cart-header1').fadeOut('slow', function (c) {
+            $('.cart-header1').remove();
+        });
+    });
+});
+</script>
+<script>$(document).ready(function (c) {
+    $('.close3').on('click', function (c) {
+        $('.cart-header2').fadeOut('slow', function (c) {
+            $('.cart-header2').remove();
+        });
+    });
+});
+</script>
 <div class="check-out">
-<div class="container">
-	
-	<div class="bs-example4" data-example-id="simple-responsive-table">
-    <div class="table-responsive">
-    	    <table class="table-heading simpleCart_shelfItem">
-		  <tr>
-			<th class="table-grid">Item</th>
-					
-			<th>Prices</th>
-			<th >Delivery </th>
-			<th>Subtotal</th>
-		  </tr>
-		  <tr class="cart-header" th:each="line : ${lineItems}">
+    <div class="container">
 
-			<td class="ring-in"><a th:href="@{/products/{productId}(productId=${line.productRepr.id})}" class="at-in"><img th:if="${!line.productRepr.picturesId.isEmpty()}" th:src="@{/picture/{pictureId}(pictureId=${line.productRepr.picturesId.get(0)})}" class="img-responsive" alt=""></a>
-			<div class="sed">
-				<h5><a th:href="@{/products/{productId}(productId=${line.productRepr.id})}" th:text="${line.productRepr.name}">Sed ut perspiciatis unde</a></h5>
-				<p th:text="${line.productRepr.quickDescription}">(At vero eos et accusamus et iusto odio dignissimos ducimus ) </p>
-			
-			</div>
-			<div class="clearfix"> </div>
-			<div class="close1"> </div></td>
-			<td>$[[${line.productRepr.price}]]</td>
-			<td>FREE SHIPPING</td>
-			<td class="item_price">$[[${line.productRepr.discountPrice}]]</td>
-			<td class="add-check"><a class="item_add hvr-skew-backward" href="#">Add To Cart</a></td>
-		  </tr>
+        <div class="bs-example4" data-example-id="simple-responsive-table">
+            <div class="table-responsive">
+                <table class="table-heading simpleCart_shelfItem">
+                    <tr>
+                        <th class="table-grid">Item</th>
+                        <th>Prices</th>
+                        <th>Discount</th>
+                        <th>Total Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr class="cart-header" th:each="line : ${lineItems}">
+                            <td class="ring-in"><a th:href="@{/products/{productId}(productId=${line.productId})}"
+                                                   class="at-in"><img th:if="${!line.productRepr.picturesId.isEmpty()}"
+                                                                      th:src="@{/picture/{pictureId}(pictureId=${line.productRepr.picturesId.get(0)})}"
+                                                                      class="img-responsive" alt=""></a>
+                                <div class="sed">
+                                    <h5><a th:href="@{/products/{productId}(productId=${line.productRepr.id})}"
+                                           th:text="${line.productRepr.name}">Sed ut perspiciatis unde</a></h5>
+                                    <p th:text="${line.productRepr.quickDescription}">(At vero eos et accusamus et iusto
+                                        odio dignissimos ducimus ) </p>
 
-	</table>
-	</div>
-	</div>
-	<div class="produced">
-	<a href="single.html" class="hvr-skew-backward">Produced To Buy</a>
-	 </div>
-</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <form th:action="@{/cart}" th:method="delete">
+                                    <input type="hidden" name="productId" th:value="${line.productId}"/>
+                                    <input type="hidden" name="color" th:value="${line.color}"/>
+                                    <input type="hidden" name="material" th:value="${line.material}"/>
+                                    <button type="submit" class="btn btn-sm btn-pill btn-danger">x</button>
+                                </form>
+                            </td>
+                            <td>$[[${line.productRepr.price}]]</td>
+                            <td class="item_price">[[${line.productRepr.discount}]]%</td>
+                            <td class="item_price">$[[${line.getTotal()}]]</td>
+                            <td>
+                                <form th:action="@{/cart}" th:method="POST">
+                                    <input type="hidden" name="productId" th:value="${line.productId}">
+                                    <div class="cart_quantity_button">
+                                        <input class="cart quantity" type="number" name="qty" th:value="${line.qty}"
+                                               autocomplete="off" size="2">
+                                    </div>
+                                <button href="#" class="add-to item_add hvr-skew-backward">Add to cart</button>
+                                </form>
+                            </td>
+                        </form>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="produced">
+            <a href="single.html" class="hvr-skew-backward">Produced To Buy</a>
+        </div>
+    </div>
 </div>
 
 <!--//login-->
 <!--brand-->
 <div class="container">
-	<div th:replace="fragments/brand :: brand_grid"></div>
+    <div th:replace="fragments/brand :: brand_grid"></div>
 </div>
 <!--//brand-->
 

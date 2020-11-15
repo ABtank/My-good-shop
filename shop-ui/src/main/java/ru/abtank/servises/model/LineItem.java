@@ -70,7 +70,7 @@ public class LineItem implements Serializable {
 
     @JsonIgnore
     public BigDecimal getTotal() {
-        return productRepr.getPrice().multiply(new BigDecimal(qty));
+        return productRepr.getDiscountPrice().multiply(new BigDecimal(qty));
     }
 
     @Override
