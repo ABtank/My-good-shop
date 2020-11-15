@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="col-sm-5 col-md-offset-2  header-login">
                     <ul>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a th:href="@{/user_login}">Login</a></li>
                         <li><a href="register.html">Register</a></li>
                         <li><a th:href="@{/cart}">Checkout</a></li>
                     </ul>
@@ -126,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                                       th:href="@{/products}">Products</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'About'} ? active"><a class="color4"
-                                                                                                   th:href="@{404}">Error</a>
+                                                                                                   th:href="@{/404}">Error</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'Short Codes'} ? active"><a class="color5"
                                                                                                          th:href="@{/typo}">Short
@@ -151,8 +151,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="cart box_1">
                         <a th:href="@{/cart}">
                             <h3>
-                                <div class="total">
-                                    <span class="simpleCart_total"></span></div>
+                                <div class="total" th:text="${cartSubTotal}">
+                                    </div>
                                 <img th:src="@{/images/cart.png}" alt=""/></h3>
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>

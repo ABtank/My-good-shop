@@ -22,14 +22,16 @@ public class HeaderController {
     private final BrandService brandService;
     private final StatusService statusService;
     private final ProductTypeService productTypeService;
+    private final CartService cartService;
 
     @Autowired
-    public HeaderController(ProductService productService, CategoryService categoryService, BrandService brandService, StatusService statusService, ProductTypeService productTypeService) {
+    public HeaderController(ProductService productService, CategoryService categoryService, BrandService brandService, StatusService statusService, ProductTypeService productTypeService, CartService cartService) {
         this.productService = productService;
         this.categoryService = categoryService;
         this.brandService = brandService;
         this.statusService = statusService;
         this.productTypeService = productTypeService;
+        this.cartService = cartService;
     }
 
     @ModelAttribute
@@ -46,5 +48,6 @@ public class HeaderController {
         Map<CategoryRepr, Set<BrandRepr>> categoryAndBrands = new LinkedHashMap<>();
         categoryService.findAll().stream().forEach(cat -> categoryAndBrands.put(cat, productService.findByCategoryName(cat.getName()).stream().map(ProductRepr::getBrand).map(br -> brandService.findByName(br).get()).collect(Collectors.toSet())));
         model.addAttribute("categoryAndBrands", categoryAndBrands);
+        model.addAttribute("cartSubTotal", cartService.getSubTotal());
     }
 }
