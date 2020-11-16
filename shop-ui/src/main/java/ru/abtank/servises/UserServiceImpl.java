@@ -47,4 +47,9 @@ public class UserServiceImpl implements UserService {
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<UserRepr> findByLogin(String name) {
+        return userRepository.findByLogin(name).map(UserRepr::new);
+    }
 }

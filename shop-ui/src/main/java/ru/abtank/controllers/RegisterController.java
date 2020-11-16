@@ -33,28 +33,11 @@ public class RegisterController {
         return "register";
     }
 
-    @GetMapping("/{id}/update")
-    public String updateUser(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("bannerPage", "Update");
-        model.addAttribute("register", false);
-        model.addAttribute("update", true);
-        model.addAttribute("user", userService.findById(id)
-                .orElseThrow(() -> new NotFoundException(id.toString(), User.class.getSimpleName())));
-        return ("register");
-    }
-
-    @DeleteMapping("/{id}/delete")
-    public String deleteUser(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("bannerPage", "Products");
-        userService.delete(id);
-        return "redirect:/products";
-    }
-
     @PostMapping("/save")
     public String saveUser(Model model, UserRepr userRepr, RedirectAttributes redirectAttributes) {
         model.addAttribute("bannerPage", "Login");
         try {
-           logger.info("try save user username{} email {}", userRepr.getUsername(), userRepr.getEmail());
+           logger.info("try save user username {} email {}", userRepr.getUsername(), userRepr.getEmail());
             userService.save(userRepr);
         } catch (Exception e) {
             logger.error("Problem with creating or updating user", e);
@@ -62,7 +45,7 @@ public class RegisterController {
             if (userRepr.getId() == null) {
                 return "redirect:/register";
             }
-            return "redirect:/register/" + userRepr.getId() + "/update";
+            return "redirect:/user/update";
         }
         return "redirect:/cart";
     }

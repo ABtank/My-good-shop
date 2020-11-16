@@ -18,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--login-->
 <div class="container">
     <div class="login">
-        <form th:action="@{/register/save}" method="POST" th:object="${user}">
+        <form th:action="@{/register/save}" th:method="POST" th:object="${user}">
             <div class="col-md-6 login-do">
                 <input th:type="hidden" th:field="*{id}">
                 <div class="login-mail">
@@ -43,10 +43,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </label>
             </div>
         </form>
-        <form th:action="@{/register/{userId}/delete(userId=${user.id})}" method="POST">
+        <form th:action="@{/user/delete}" th:method="delete">
+            <div class="col-md-6 login-do">
             <label th:if="${update}" class="hvr-skew-backward">
-                <button type="submit" class="color">Delete</button>
+                <input type="submit" value="Delete">
             </label>
+            </div>
         </form>
         <div th:if="${register}" class="col-md-6 login-right">
             <h3>Completely Free Account</h3>
