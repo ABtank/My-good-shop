@@ -73,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a></li>
                         <li>
                             <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
-                                <input type="submit" id="link-logout" value="Checkout"/>
+                                <input class="btn btn-link" type="submit" id="link-logout" value="Checkout"/>
                             </form>
                         </li>
                     </ul>

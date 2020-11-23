@@ -40,9 +40,11 @@ public class CartController {
     @PostMapping
     public String updateCart(LineItem lineItem) {
         logger.info("lineItem qty {} productId {}", lineItem.getQty(), lineItem.getProductId());
-        lineItem.setProductRepr(productService.findById(lineItem.getProductId())
-                .orElseThrow(IllegalArgumentException::new));
-        cartService.updateCart(lineItem);
+        if (lineItem.getQty() >= 1) {
+            lineItem.setProductRepr(productService.findById(lineItem.getProductId())
+                    .orElseThrow(IllegalArgumentException::new));
+            cartService.updateCart(lineItem);
+        }
         return "redirect:/cart";
     }
 

@@ -3,6 +3,8 @@ package ru.abtank.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +45,8 @@ public class UserController {
                 .orElseThrow(() -> new NotFoundException("-1", User.class.getSimpleName()));
         logger.info("Delete User login= {} id= {}", userRepr.getUsername(),userRepr.getId());
         userService.delete(userRepr.getId());
-        return "redirect:/products";
+        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        logger.info("----setAuthenticated(false)---");
+        return "redirect:/user_login";
     }
 }

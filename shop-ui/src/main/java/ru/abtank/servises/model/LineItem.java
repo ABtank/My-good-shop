@@ -15,15 +15,9 @@ public class LineItem implements Serializable {
 
     private Integer qty;
 
-    private String color;
-
-    private String material;
-
-    public LineItem(ProductRepr productRepr, String color, String material) {
+    public LineItem(ProductRepr productRepr) {
         this.productId = productRepr.getId();
         this.productRepr = productRepr;
-        this.color = color;
-        this.material = material;
     }
     public LineItem() {
     }
@@ -51,23 +45,6 @@ public class LineItem implements Serializable {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
     @JsonIgnore
     public BigDecimal getTotal() {
         return productRepr.getDiscountPrice().multiply(new BigDecimal(qty));
@@ -78,14 +55,12 @@ public class LineItem implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LineItem lineItem = (LineItem) o;
-        return productId.equals(lineItem.productId) &&
-                Objects.equals(emptyToNull(color), emptyToNull(lineItem.color)) &&
-                Objects.equals(emptyToNull(material), emptyToNull(lineItem.material));
+        return productId.equals(lineItem.productId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, color, material);
+        return Objects.hash(productId);
     }
 
     private static String emptyToNull(String val) {

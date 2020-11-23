@@ -20,4 +20,6 @@ public interface CartService extends Serializable {
     BigDecimal getSubTotal();
 
     void updateCart(LineItem lineItem);
+
+    void clearCart();
 }

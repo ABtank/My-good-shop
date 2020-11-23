@@ -44,13 +44,13 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addProductQty(ProductRepr productRepr, String color, String material, int qty) {
-        LineItem lineItem = new LineItem(productRepr, color, material);
+        LineItem lineItem = new LineItem(productRepr);
         lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + qty);
     }
 
     @Override
     public void removeProductQty(ProductRepr productRepr, String color, String material, int qty) {
-        LineItem lineItem = new LineItem(productRepr, color, material);
+        LineItem lineItem = new LineItem(productRepr);
 
         int currentQty = lineItems.getOrDefault(lineItem, 0);
         if (currentQty - qty > 0) {
@@ -82,5 +82,10 @@ public class CartServiceImpl implements CartService {
     @Override
     public void updateCart(LineItem lineItem) {
         lineItems.put(lineItem, lineItem.getQty());
+    }
+
+    @Override
+    public void clearCart() {
+        this.lineItems.clear();
     }
 }
