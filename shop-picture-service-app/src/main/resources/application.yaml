@@ -1,0 +1,38 @@
+server:
+  port: 8986
+
+spring:
+  application:
+    name: picture-service
+  cloud:
+    config:
+      uri: http://localhost:8986
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/good_shop
+    username: postgres
+    password: 123
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp:
+          user_jdbc_metadata_defaults: false
+        ddl-auto: validate
+
+picture:
+  storage:
+    type: database
+    path: C:/Users/ABtan/OneDrive/CODDING/Java-programist/Java8Level/My-good-Shop/shop-ui/src/main/resources/static/picture
