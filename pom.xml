@@ -27,6 +27,7 @@
         <module>shop-picture-service</module>
         <module>shop-picture-service-app</module>
         <module>shop-ui-admin</module>
+        <module>spring-cloud-config</module>
         <module>spring-eureka</module>
         <module>shop-ui</module>
     </modules>
