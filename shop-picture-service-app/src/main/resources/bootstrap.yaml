@@ -1,0 +1,10 @@
+#server:
+#  port: 8986
+# -Dserver.port=9087
+
+spring:
+  application:
+    name: picture-service
+  cloud:
+    config:
+      uri: http://localhost:8900
