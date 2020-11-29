@@ -30,6 +30,8 @@ public class ProductRepr {
 
     private Status status;
 
+    private Integer countInStock;
+
     private ProductType type;
     //для сохранения в бд достаточно списка картинок
     private List<PictureRepr> pictures;
@@ -159,5 +161,13 @@ public class ProductRepr {
 
     public void setType(ProductType type) {
         this.type = type;
+    }
+
+    public Integer getCountInStock() {
+        return countInStock;
+    }
+
+    public void setCountInStock(Integer countInStock) {
+        this.countInStock = countInStock;
     }
 }

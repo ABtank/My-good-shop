@@ -34,6 +34,7 @@
                     <th>Brand</th>
                     <th>Type</th>
                     <th>Status</th>
+                    <th>In Storage</th>
                     <th sec:authorize="hasRole('ADMIN')" class="actions">Actions</th>
                     </thead>
                     <tbody>
@@ -49,6 +50,7 @@
                         <td th:text="${product.brand.name}"></td>
                         <td th:text="${product.type.name}"></td>
                         <td th:text="${product.status.name}"></td>
+                        <td th:text="${product.countInStock}"></td>
                         <td sec:authorize="hasRole('ADMIN')">
                             <a th:href="@{/products/{id}/update(id=${product.id})}" class="btn btn-icon btn-pill btn-primary"
                                data-toggle="tooltip" title="Edit">
