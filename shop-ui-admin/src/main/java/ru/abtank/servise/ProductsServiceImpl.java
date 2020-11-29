@@ -25,12 +25,15 @@ public class ProductsServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final PictureService pictureService;
 
+    private final StockService stockService;
+
     private static final Logger logger = LoggerFactory.getLogger(ProductsServiceImpl.class);
 
     @Autowired
-    public ProductsServiceImpl(ProductRepository productRepository, PictureService pictureService) {
+    public ProductsServiceImpl(ProductRepository productRepository, PictureService pictureService, StockService stockService) {
         this.productRepository = productRepository;
         this.pictureService = pictureService;
+        this.stockService = stockService;
     }
 
     @Override
@@ -39,6 +42,7 @@ public class ProductsServiceImpl implements ProductService {
         return productRepository.findAll()
                 .stream()
                 .map(ProductRepr::new)
+                .peek(pr -> pr.setCountInStock(stockService.getStockById(pr.getId()).getCount()))
                 .collect(Collectors.toList());
     }
 

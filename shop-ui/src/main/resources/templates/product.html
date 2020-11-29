@@ -23,8 +23,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="flexslider">
                     <ul class="slides">
                         <th:block th:each="pic : ${product.picturesId}">
-                            <li th:data-thumb="@{/picture/{pict}(pict = ${pic})}">
-                                <div class="thumb-image"><img th:src="@{/picture/{pict}(pict = ${pic})}"
+                            <li th:data-thumb="@{{pictureServiceUrl}/picture/{pict}(pict = ${pic}, pictureServiceUrl=${pictureServiceUrl})}">
+                                <div class="thumb-image"><img th:src="@{{pictureServiceUrl}/picture/{pict}(pict = ${pic}, pictureServiceUrl=${pictureServiceUrl})}"
                                                               data-imagezoom="true" class="img-responsive"></div>
                             </li>
                         </th:block>

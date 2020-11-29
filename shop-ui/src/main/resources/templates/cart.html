@@ -63,7 +63,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <tr class="cart-header" th:each="line : ${lineItems}">
                         <td class="ring-in"><a th:href="@{/products/{productId}(productId=${line.productId})}"
                                                class="at-in"><img th:if="${!line.productRepr.picturesId.isEmpty()}"
-                                                                  th:src="@{/picture/{pictureId}(pictureId=${line.productRepr.picturesId.get(0)})}"
+                                                                  th:src="@{{pictureServiceUrl}/picture/{pictureId}(pictureId=${line.productRepr.picturesId.get(0)}, pictureServiceUrl=${pictureServiceUrl})}"
                                                                   class="img-responsive" alt=""></a>
                             <div class="sed">
                                 <h5><a th:href="@{/products/{productId}(productId=${line.productRepr.id})}"

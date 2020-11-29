@@ -103,7 +103,7 @@
             <div class="card-columns" style="column-count: 5">
                 <div class="card" th:each="picture : ${product.pictures}">
                     <div class="card-header" th:text="${picture.name}">Picture</div>
-                    <img class="card-img-bottom" th:src="@{/picture/{pictureId}(pictureId=${picture.id})}"
+                    <img class="card-img-bottom" th:src="@{{pictureServiceUrl}/picture/{pictureId}(pictureId=${picture.id}, pictureServiceUrl=${pictureServiceUrl})}"
                          width="40%"/>
                 </div>
             </div>
