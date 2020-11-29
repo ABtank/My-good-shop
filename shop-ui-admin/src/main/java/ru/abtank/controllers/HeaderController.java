@@ -1,5 +1,9 @@
 package ru.abtank.controllers;
 
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,6 +15,8 @@ import java.security.Principal;
 @ControllerAdvice
 public class HeaderController {
 
+    private static final Logger logger = LoggerFactory.getLogger(HeaderController.class);
+
     private final ProductService productService;
     private final UserService userService;
     private final CategoryService categoryService;
@@ -19,8 +25,10 @@ public class HeaderController {
     private final ProductTypeService productTypeService;
     private final RoleService roleService;
 
+    private final EurekaClient eurekaClient;
+
     @Autowired
-    public HeaderController(ProductService productService, UserService userService, CategoryService categoryService, BrandService brandService, StatusService statusService, ProductTypeService productTypeService, RoleService roleService) {
+    public HeaderController(ProductService productService, UserService userService, CategoryService categoryService, BrandService brandService, StatusService statusService, ProductTypeService productTypeService, RoleService roleService, EurekaClient eurekaClient) {
         this.productService = productService;
         this.userService = userService;
         this.categoryService = categoryService;
@@ -28,6 +36,7 @@ public class HeaderController {
         this.statusService = statusService;
         this.productTypeService = productTypeService;
         this.roleService = roleService;
+        this.eurekaClient = eurekaClient;
     }
 
     @ModelAttribute
@@ -42,5 +51,8 @@ public class HeaderController {
             model.addAttribute("count_product_types", productTypeService.findAll().size());
             model.addAttribute("count_roles", roleService.findAll().size());
         }
+        InstanceInfo server = eurekaClient.getNextServerFromEureka("GATEWAY-SERVICE", false);
+        logger.info("Picture service instance: " + server);
+        model.addAttribute("pictureServiceUrl", server.getHomePageUrl() + "picture-service");
     }
 }

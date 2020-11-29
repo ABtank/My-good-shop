@@ -1,0 +1,11 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /store
+
+spring:
+  application:
+    name: shop-ui-admin
+  cloud:
+    config:
+      uri: http://localhost:8900

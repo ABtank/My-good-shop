@@ -19,3 +19,9 @@ spring:
             - Path=/picture-service/picture/**
           filters:
             - StripPrefix=1
+#        - id: database-service
+#          uri: lb://DATABASE-SERVICE
+#          predicates:
+#            - Path=/database-service/database/**
+#          filters:
+#            - StripPrefix=1

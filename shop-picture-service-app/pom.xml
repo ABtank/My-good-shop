@@ -13,10 +13,6 @@
 	<name>shop-picture-service-app</name>
 	<description>cloud shop-picture-service-app</description>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>ru.abtank</groupId>
@@ -33,7 +29,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-client</artifactId>
 		</dependency>
-
+		<!--для экспонирования своих метрик(состояния)-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
