@@ -32,6 +32,7 @@
         <module>spring-gateway</module>
         <module>shop-service</module>
         <module>rabbit-mq-sender</module>
+        <module>spring-integration-demo</module>
         <module>shop-ui</module>
     </modules>
 

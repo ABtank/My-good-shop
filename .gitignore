@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/spring-integration-demo/dest/
+/spring-integration-demo/source/

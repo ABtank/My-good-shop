@@ -6,3 +6,8 @@ Some text message to second user
 POST http://localhost:8181/send?user=second.user
 
 Some text message to first user
+
+###
+POST http://localhost:8181/send?user=third.user
+
+Some text message
