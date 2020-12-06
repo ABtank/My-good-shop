@@ -31,6 +31,7 @@
         <module>spring-eureka</module>
         <module>spring-gateway</module>
         <module>shop-service</module>
+        <module>rabbit-mq-sender</module>
         <module>shop-ui</module>
     </modules>
 
