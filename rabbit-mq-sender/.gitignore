@@ -1,4 +1,4 @@
-shop-ui-admin/HELP.md
+HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -31,5 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/spring-integration-demo/dest/
-/spring-integration-demo/source/
