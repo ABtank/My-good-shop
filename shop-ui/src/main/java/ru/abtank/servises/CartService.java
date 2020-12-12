@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CartService extends Serializable {
 
-    void addProductQty(ProductRepr productRepr, String color, String material, int qty);
+    void addProductQty(ProductRepr productRepr, int qty);
 
-    void removeProductQty(ProductRepr productRepr, String color, String material, int qty);
+    void removeProductQty(ProductRepr productRepr, int qty);
 
     void removeProduct(LineItem lineItem);
 
