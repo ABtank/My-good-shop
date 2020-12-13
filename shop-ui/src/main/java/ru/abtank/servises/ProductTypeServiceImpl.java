@@ -3,8 +3,6 @@ package ru.abtank.servises;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.abtank.exceptions.NotFoundException;
-import ru.abtank.persist.model.ProductType;
 import ru.abtank.persist.repositories.ProductTypeRepository;
 import ru.abtank.representations.ProductTypeRepr;
 
@@ -15,12 +13,13 @@ import java.util.stream.Collectors;
 @Service
 public class ProductTypeServiceImpl implements ProductTypeService {
 
-    private ProductTypeRepository productTypeRepository;
+    private final ProductTypeRepository productTypeRepository;
 
     @Autowired
-    public void setProductTypeRepository(ProductTypeRepository productTypeRepository) {
+    public ProductTypeServiceImpl(ProductTypeRepository productTypeRepository) {
         this.productTypeRepository = productTypeRepository;
     }
+
 
     @Override
     @Transactional
