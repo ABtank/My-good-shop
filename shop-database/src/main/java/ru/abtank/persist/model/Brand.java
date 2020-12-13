@@ -24,6 +24,10 @@ public class Brand implements Serializable {
     public Brand() {
     }
 
+    public Brand(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

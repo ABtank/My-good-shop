@@ -43,13 +43,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addProductQty(ProductRepr productRepr, String color, String material, int qty) {
+    public void addProductQty(ProductRepr productRepr, int qty) {
         LineItem lineItem = new LineItem(productRepr);
         lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + qty);
     }
 
+
     @Override
-    public void removeProductQty(ProductRepr productRepr, String color, String material, int qty) {
+    public void removeProductQty(ProductRepr productRepr, int qty) {
         LineItem lineItem = new LineItem(productRepr);
 
         int currentQty = lineItems.getOrDefault(lineItem, 0);

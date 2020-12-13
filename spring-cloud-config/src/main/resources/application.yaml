@@ -8,5 +8,5 @@ spring:
           uri: https://github.com/ABtank/cloud-config-sever
 #          uri: file://@project.basedir@/config-repository
 #          uri: file:///${user.home}/config-repository
-          username:
-          password:
+          username: abtank
+          password: Z4Vesrfd1.
