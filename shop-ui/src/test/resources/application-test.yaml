@@ -1,0 +1,46 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /store
+
+spring:
+#  main:
+#    allow-bean-definition-overriding: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.xml
+#    enabled: true
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    username: sa
+    password:
+
+  h2:console:
+    enabled: true
+    settings:
+      web-allow-others: false
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: update
+
+picture:
+  storage:
+    type: database
+    path: C:/Users/ABtan/OneDrive/CODDING/Java-programist/Java8Level/My-good-Shop/shop-ui/src/main/resources/static/picture
+
+#logging:
+#  level: debug
+eureka:
+  client:
+    enabled: false
