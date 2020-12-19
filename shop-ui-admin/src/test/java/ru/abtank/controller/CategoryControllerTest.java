@@ -15,8 +15,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.abtank.persist.model.Brand;
-import ru.abtank.persist.repositories.BrandRepository;
+import ru.abtank.persist.model.Category;
+import ru.abtank.persist.repositories.CategoryRepository;
 import ru.abtank.servise.StockService;
 
 import java.util.Optional;
@@ -34,18 +34,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(locations = "classpath:application-test.yaml")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BrandControllerTest {
+public class CategoryControllerTest {
 
     @Autowired
     private MockMvc mvc;
     @Autowired
-    private BrandRepository brandRepository;
+    private CategoryRepository categoryRepository;
     @MockBean
     private EurekaClient eurekaClient;
 
     @BeforeEach
     public void init(){
-        brandRepository.deleteAllInBatch(); // очистка БД перед тестом
+        categoryRepository.deleteAllInBatch(); // очистка БД перед тестом
         InstanceInfo instanceInfo = mock(InstanceInfo.class);
         when(instanceInfo.getHomePageUrl()).thenReturn("mock-homepage-url");
 
@@ -58,21 +58,21 @@ public class BrandControllerTest {
 
     @WithMockUser(value = "admin", password = "123", roles = {"ADMIN"})  // для регистрации в spring security
     @Test
-    public void testBrandCreation() throws Exception {
+    public void testCategoryCreation() throws Exception {
         //проверка отработки самого запроса
-        mvc.perform(post("/brands/save")
+        mvc.perform(post("/categories/save")
         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
         .param("id", "-1")
-        .param("name","New brand")
+        .param("name","New Category")
         .with(csrf()) //мы используем csrf для контроля безопасности
         )
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/brands"));
+                .andExpect(view().name("redirect:/categories"));
 
         //проверка добавился ли продукт в БД
-        Optional<Brand> brand = brandRepository.findOne(Example.of(new Brand("New brand")));
+        Optional<Category> category = categoryRepository.findOne(Example.of(new Category("New Category")));
 
-        Assertions.assertTrue(brand.isPresent());
-        Assertions.assertEquals("New brand", brand.get().getName());
+        Assertions.assertTrue(category.isPresent());
+        Assertions.assertEquals("New Category", category.get().getName());
     }
 }

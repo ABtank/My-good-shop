@@ -1,19 +1,18 @@
-server:
-  port: 8888
-  servlet:
-    context-path: /store
+#server:
+#  port: 8888
+#  servlet:
+#    context-path: /store
 
 spring:
 #  main:
 #    allow-bean-definition-overriding: true
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
 
-#  liquibase:
-#    change-log: classpath:db/changelog/db.changelog-master.xml
-#    enabled: true
+  liquibase:
+    enabled: false
 
   datasource:
     driver-class-name: org.h2.Driver

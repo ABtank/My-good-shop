@@ -62,10 +62,12 @@ public class CategoriesController {
     public String saveCategory(Model model, CategoryRepr categoryRepr, RedirectAttributes redirectAttributes) {
         model.addAttribute("actionPage", "Categories");
         try {
+            logger.info("try save category");
             categoryService.save(categoryRepr);
+            logger.info("category saved");
         } catch (Exception e) {
             logger.error("Problem with creating or updating category", e);
-            if (categoryRepr.getId() == null) {
+            if (categoryRepr.getId() == null && categoryRepr.getId() <= 0) {
                 return "redirect:/categories/create";
             }
             return "redirect:/categories/" + categoryRepr.getId() + "/update";

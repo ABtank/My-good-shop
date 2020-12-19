@@ -68,7 +68,7 @@ public class StatusController {
         } catch (Exception ex) {
             logger.error("Problem with creating or updating status", ex);
             redirectAttributes.addFlashAttribute("error", true);
-            if (status.getId() == null) {
+            if (status.getId() == null && status.getId() <= 0) {
                 return "redirect:/statuses/create";
             }
             return "redirect:/statuses/" + status.getId() + "/update";

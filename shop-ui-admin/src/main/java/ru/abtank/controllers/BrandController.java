@@ -60,14 +60,15 @@ public class BrandController {
     @PostMapping("/save")
     public String saveBrand(Model model, BrandRepr brand, RedirectAttributes redirectAttributes) {
         model.addAttribute("activePage", "Brands");
-        logger.info("come to try");
+        logger.info("come to try save brand");
         try {
-            logger.info("try save");
+            logger.info("try save brand");
             brandService.save(brand);
+            logger.info("brand saved");
         } catch (Exception ex) {
             logger.error("Problem with creating or updating brand", ex);
             redirectAttributes.addFlashAttribute("error", true);
-            if (brand.getId() == null) {
+            if (brand.getId() == null || brand.getId() <= 0) {
                 return "redirect:/brands/create";
             }
             return "redirect:/brands/" + brand.getId() + "/update";
