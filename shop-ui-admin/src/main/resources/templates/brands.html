@@ -12,13 +12,13 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4">Brands list</h2>
+        <h2 id="table_header" class="mb-4">Brands list</h2>
 
         <div class="card mb-4">
 
             <div class="card-body">
                 <form class="form-group" sec:authorize="hasRole('ADMIN')" th:action="@{/brands/create}">
-                    <button type="submit" class="btn btn-primary">Create new</button>
+                    <button id="btn_create_brand" type="submit" class="btn btn-primary">Create new</button>
                 </form>
 
                 <table id="brands" class="table table-hover" cellspacing="0" width="100%">
