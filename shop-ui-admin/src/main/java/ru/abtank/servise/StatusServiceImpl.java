@@ -47,7 +47,7 @@ public class StatusServiceImpl implements StatusService {
     @Override
     @Transactional
     public void save(StatusRepr statusRepr) throws IOException {
-        Status status = (statusRepr.getId() != null) ? statusRepository.findById(statusRepr.getId())
+        Status status = (statusRepr.getId() != null && statusRepr.getId() > 0) ? statusRepository.findById(statusRepr.getId())
                 .orElseThrow(NotFoundException::new) : new Status();
         status.setName(statusRepr.getName());
         statusRepository.save(status);

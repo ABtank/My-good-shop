@@ -47,7 +47,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     @Transactional
     public void save(BrandRepr brandRepr) throws IOException {
-        Brand brand = (brandRepr.getId() != null) ? brandRepository.findById(brandRepr.getId())
+        Brand brand = (brandRepr.getId() != null && brandRepr.getId() > 0) ? brandRepository.findById(brandRepr.getId())
                 .orElseThrow(NotFoundException::new) : new Brand();
         brand.setName(brandRepr.getName());
         brandRepository.save(brand);

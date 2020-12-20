@@ -8,25 +8,25 @@
 <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
     <ul class="list-unstyled">
         <li th:classappend="${activePage == 'Users'} ? active" sec:authorize="hasRole('ADMIN')">
-            <a th:href="@{/users}" th:text="${' Users ('+count_users+')'}">
+            <a id="users_link" th:href="@{/users}" th:text="${' Users ('+count_users+')'}">
                 <i class="fa fa-fw fa-link"></i></a></li>
         <li th:classappend="${activePage == 'Roles'} ? active" sec:authorize="hasRole('ADMIN')">
-            <a th:href="@{/roles}" th:text="${'Roles ('+count_roles+')'}">
+            <a id="roles_link" th:href="@{/roles}" th:text="${'Roles ('+count_roles+')'}">
                 <i class="fa fa-fw fa-link"></i> Roles</a></li>
         <li th:classappend="${activePage == 'Categories'} ? active">
-            <a th:href="@{/categories}" th:text="${'Categories ('+count_categories+')'}">
+            <a id="categories_link" th:href="@{/categories}" th:text="${'Categories ('+count_categories+')'}">
                 <i class="fa fa-fw fa-link"></i> Categories</a></li>
         <li th:classappend="${activePage == 'Brands'} ? active">
-            <a th:href="@{/brands}" th:text="${'Brands ('+count_brands+')'}">
+            <a id="brands_link" th:href="@{/brands}" th:text="${'Brands ('+count_brands+')'}">
                 <i class="fa fa-fw fa-link"></i> Brands</a></li>
         <li th:classappend="${activePage == 'Statuses'} ? active">
-            <a th:href="@{/statuses}" th:text="${'Statuses ('+count_statuses+')'}">
+            <a id="statuses_link" th:href="@{/statuses}" th:text="${'Statuses ('+count_statuses+')'}">
                 <i class="fa fa-fw fa-link"></i> Statuses</a></li>
         <li th:classappend="${activePage == 'Product_types'} ? active">
-            <a th:href="@{/product_types}" th:text="${'Product_types ('+count_product_types+')'}">
+            <a id="product_types_link" th:href="@{/product_types}" th:text="${'Product_types ('+count_product_types+')'}">
                 <i class="fa fa-fw fa-link"></i> Product_types</a></li>
         <li th:classappend="${activePage == 'Products'} ? active">
-            <a th:href="@{/products}" th:text="${'Products ('+count_products+')'}">
+            <a id="products_link" th:href="@{/products}" th:text="${'Products ('+count_products+')'}">
                 <i class="fa fa-fw fa-link"></i> Products</a></li>
     </ul>
 </div>

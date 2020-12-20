@@ -92,13 +92,24 @@ public class ProductsController {
     @PostMapping("/save")
     public String saveProduct(Model model, ProductRepr productRepr, RedirectAttributes redirectAttributes) {
         model.addAttribute("activePage", "Products");
+        logger.info("try save product");
+        logger.info("try save product \ncategory {} ", productRepr.getCategory().getName());
+        logger.info("try save product \nbrand {} ", productRepr.getBrand().getName());
+        logger.info("try save product \nname {} ", productRepr.getName());
+        logger.info("try save product \ntype {} ", productRepr.getType().getName());
+        logger.info("try save product \nstatus {} ", productRepr.getStatus().getName());
+        logger.info("try save product \nquick_desc {} ", productRepr.getQuickDescription());
+        logger.info("try save product \ndescription {} ", productRepr.getDescription());
+        logger.info("try save product \nsize {} ", productRepr.getSize());
+        logger.info("try save product \ndiscount {} ", productRepr.getDiscount());
+        logger.info("try save product \nprice {} ", productRepr.getPrice());
         try {
             logger.info("try save product \ncategory {} \nbrand {} \nname {} \ntype {} \nstatus {} \nquick_desc {} \ndescription {} \nsize {} \ndiscount {} \nprice {}",
                     productRepr.getCategory().getName(), productRepr.getBrand().getName(), productRepr.getName(), productRepr.getType().getName(), productRepr.getStatus().getName(),
                     productRepr.getQuickDescription(), productRepr.getDescription(), productRepr.getSize(), productRepr.getDiscount(), productRepr.getPrice());
             productService.save(productRepr);
         } catch (Exception e) {
-            if (productRepr.getId() == null) {
+            if (productRepr.getId() == null && productRepr.getId() <= 0 ) {
                 logger.error("Problem with creating or updating product", e);
                 return "redirect:/products/create";
             }

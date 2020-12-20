@@ -47,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public void save(CategoryRepr categoryRepr) throws IOException {
-        Category category = (categoryRepr.getId() != null) ? categoryRepository.findById(categoryRepr.getId())
+        Category category = (categoryRepr.getId() != null && categoryRepr.getId() > 0) ? categoryRepository.findById(categoryRepr.getId())
                 .orElseThrow(NotFoundException::new) : new Category();
         category.setName(categoryRepr.getName());
         categoryRepository.save(category);

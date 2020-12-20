@@ -61,8 +61,9 @@ public class ProductsServiceImpl implements ProductService {
     @Override
     @Transactional
     public void save(ProductRepr productRepr) throws IOException {
-        Product product = (productRepr.getId() != null) ? productRepository.findById(productRepr.getId())
+        Product product = (productRepr.getId() != null && productRepr.getId() < 0) ? productRepository.findById(productRepr.getId())
                 .orElseThrow(NotFoundException::new) : new Product();
+        logger.info("product set param");
         product.setName(productRepr.getName());
         product.setQuickDescription(productRepr.getQuickDescription());
         product.setDescription(productRepr.getDescription());

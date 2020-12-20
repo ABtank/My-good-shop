@@ -69,7 +69,7 @@ public class ProductTypeController {
         } catch (Exception ex) {
             logger.error("Problem with creating or updating productType", ex);
             redirectAttributes.addFlashAttribute("error", true);
-            if (productType.getId() == null) {
+            if (productType.getId() == null && productType.getId() <= 0) {
                 return "redirect:/product_types/create";
             }
             return "redirect:/product_types/" + productType.getId() + "/update";

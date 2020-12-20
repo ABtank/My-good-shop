@@ -37,16 +37,22 @@ public class ProductControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
     @Autowired
     private ProductRepository productRepository;
+
     @Autowired
     private CategoryRepository categoryRepository;
+
     @Autowired
     private BrandRepository brandRepository;
+
     @Autowired
     private StatusRepository statusRepository;
+
     @Autowired
     private ProductTypeRepository productTypeRepository;
+
     @MockBean
     private EurekaClient eurekaClient;
 
@@ -59,7 +65,7 @@ public class ProductControllerTest {
                 .thenReturn(instanceInfo);
     }
 
-    @WithMockUser(value = "admin", password = "123", roles = {"ADMIN"})  // для регистрации в spring securit
+    @WithMockUser(value = "admin", password = "123", roles = {"ADMIN"})  // для регистрации в spring security
     @Test
     public void testProductDetails() throws Exception {
         Brand brand = brandRepository.save(new Brand());

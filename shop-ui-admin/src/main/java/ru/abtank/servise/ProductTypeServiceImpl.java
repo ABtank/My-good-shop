@@ -47,7 +47,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     @Transactional
     public void save(ProductTypeRepr productTypeRepr) throws IOException {
-        ProductType productType = (productTypeRepr.getId() != null) ? productTypeRepository.findById(productTypeRepr.getId())
+        ProductType productType = (productTypeRepr.getId() != null && productTypeRepr.getId() > 0) ? productTypeRepository.findById(productTypeRepr.getId())
                 .orElseThrow(NotFoundException::new) : new ProductType();
         productType.setName(productTypeRepr.getName());
         productTypeRepository.save(productType);
