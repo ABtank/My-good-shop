@@ -62,9 +62,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <div class="col-sm-5 col-md-offset-2  header-login">
                     <ul>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Register</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li>
+                            <a sec:authorize="!isAuthenticated()"
+                               th:href="@{/user_login}">Login</a>
+                            <a sec:authorize="isAuthenticated()"
+                               th:href="@{/user/update}">Welcome
+                                <span sec:authentication="principal.username"></span>
+                            </a>
+                        </li>
+                        <li><a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a></li>
+                        <li>
+                            <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="POST">
+                                <input class="btn btn-link" type="submit" id="link-logout" value="Checkout"/>
+                            </form>
+                        </li>
                     </ul>
                 </div>
 
@@ -105,15 +116,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <ul class="nav navbar-nav nav_1">
                                 <li><a class="color" th:href="@{/}">Home</a></li>
                                 <li class="dropdown mega-dropdown active">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" th:text="${'Categories ('+count_categories+')'}">Categories<span
+                                    <a href="#" class="color1 dropdown-toggle" data-toggle="dropdown"
+                                       th:text="${'Categories ('+count_categories+')'}">Categories<span
                                             class="caret"></span></a>
-                                    <div class="dropdown-menu mega-dropdown-menu">
+                                    <div class="dropdown-menu">
                                         <div class="menu-top">
                                             <div class="col1" th:each="cat : ${categoryAndBrands}">
                                                 <div class="h_nav">
-                                                    <h4 th:text="${cat.key.name +' ('+cat.value.size()+')'}">Submenu1</h4>
+                                                    <h4 th:text="${cat.key.name +' ('+cat.value.size()+')'}">
+                                                        Submenu1</h4>
                                                     <ul th:each="brand : ${cat.value}">
-                                                        <li><a th:href="@{'/products'+'?radio_category='+${cat.key.id}+'&radio_brand='+${brand.id}}"
+                                                        <li>
+                                                            <a th:href="@{'/products'+'?radio_category='+${cat.key.id}+'&radio_brand='+${brand.id}}"
                                                                th:text="${brand.name}">Accessories</a></li>
                                                     </ul>
                                                 </div>
@@ -126,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                                       th:href="@{/products}">Products</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'About'} ? active"><a class="color4"
-                                                                                                   th:href="@{404}">Error</a>
+                                                                                                   th:href="@{/404}">Error</a>
                                 </li>
                                 <li class="" th:classappend="${activePage == 'Short Codes'} ? active"><a class="color5"
                                                                                                          th:href="@{/typo}">Short
@@ -149,10 +163,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 class="glyphicon glyphicon-search"> </i></a></li>
                     </ul>
                     <div class="cart box_1">
-                        <a href="checkout.html">
+                        <a th:href="@{/cart}">
                             <h3>
-                                <div class="total">
-                                    <span class="simpleCart_total"></span></div>
+                                <div class="total" th:text="${cartSubTotal}">
+                                </div>
                                 <img th:src="@{/images/cart.png}" alt=""/></h3>
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>

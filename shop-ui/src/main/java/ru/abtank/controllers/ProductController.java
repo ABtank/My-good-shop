@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.abtank.exceptions.NotFoundException;
 import ru.abtank.persist.model.Product;
-import ru.abtank.representations.BrandRepr;
-import ru.abtank.representations.CategoryRepr;
 import ru.abtank.representations.ProductRepr;
 import ru.abtank.servises.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/products")
@@ -30,21 +27,23 @@ public class ProductController {
     private final CategoryService categoryService;
     private final StatusService statusService;
     private final ProductTypeService productTypeService;
+    private final CartService cartService;
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    public ProductController(ProductService productService, BrandService brandService, CategoryService categoryService, StatusService statusService, ProductTypeService productTypeService) {
+    public ProductController(ProductService productService, BrandService brandService, CategoryService categoryService, StatusService statusService, ProductTypeService productTypeService, CartService cartService) {
         this.productService = productService;
         this.brandService = brandService;
         this.categoryService = categoryService;
         this.statusService = statusService;
         this.productTypeService = productTypeService;
+        this.cartService = cartService;
     }
 
     @GetMapping
     public String productsPage(Model model,
                                @RequestParam(defaultValue = "1", name = "page") Integer page,
-                               @RequestParam(defaultValue = "6", name = "size") Integer size,
+                               @RequestParam(defaultValue = "4", name = "size") Integer size,
                                @RequestParam Map<String, String> params,
                                @RequestParam MultiValueMap<String, String> checkboxParams) {
         if(page<1) page=1;
